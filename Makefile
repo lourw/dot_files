@@ -1,9 +1,11 @@
 CUR_DIR=$(shell pwd)
-
 # Target Paths
+#
 NVIM_PATH=~/.config/nvim
 TMUX_PATH=~/.tmux.conf
 ZSH_CONFIG_PATH=~/.zsh_configs.zsh
+
+PATHS := ${NVIM_PATH} ${TMUX_PATH} ${ZSH_CONFIG_PATH}
 
 regenerate: clean setup
 
@@ -20,4 +22,4 @@ setup_zsh:
 	grep -qxF "source ${ZSH_CONFIG_PATH}" ~/.zshrc || echo "source ${ZSH_CONFIG_PATH}" >> ~/.zshrc
 
 clean:
-	rm ${NVIM_PATH} ${TMUX_PATH} ${ZSH_CONFIG_PATH}
+	rm $(PATHS)
