@@ -12,7 +12,7 @@ alias sane='stty sane'
 alias tmuxconfig='nvim ~/.tmux.conf'
 alias vim='nvim'
 alias vimconfig='nvim ~/.config/nvim/lua/configs'
-alias zshconfig='nvim ~/.zsh_configs.zsh && source ~/.zsh_configs.zsh'
+alias zshconfig='nvim ~/.zshconf && source ~/.zshrc'
 
 # --- git ---
 alias rebase='git fetch origin main:main && git rebase main'
@@ -21,5 +21,5 @@ alias rebase='git fetch origin main:main && git rebase main'
 alias npm='pnpm'
 
 # --- zsh configs ---
-autoload -uz compinit && compinit
+autoload -Uz compinit && compinit
 
