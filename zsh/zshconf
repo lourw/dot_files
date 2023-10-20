@@ -3,8 +3,10 @@
 # ==========================
 #
 # --- ALIASES ---
+alias df='cd ~/.config/dot_files'
 alias e='nvim'
-alias home='cd ~'
+alias h='cd ~'
+alias fcd='cd $(fd -L --type d . ~ | fzf)'
 alias ls="ls --color=auto"
 alias notes='cd ~/notes && nvim $(date '+%y-%m-%d').md'
 alias precommit-config='nvim .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit'
