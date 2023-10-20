@@ -3,24 +3,23 @@
 # ==========================
 #
 # --- ALIASES ---
-alias zshconfig='nvim ~/.zsh_configs.zsh && source ~/.zsh_configs.zsh'
-alias vimconfig='nvim ~/.config/nvim/lua/configs'
-alias tmuxconfig='nvim ~/.tmux.conf'
-alias ls="ls --color=auto"
-alias vim='nvim'
 alias e='nvim'
 alias home='cd ~'
-
+alias ls="ls --color=auto"
+alias notes='cd ~/notes && nvim $(date '+%y-%m-%d').md'
 alias precommit-config='nvim .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit'
+alias sane='stty sane'
+alias tmuxconfig='nvim ~/.tmux.conf'
+alias vim='nvim'
+alias vimconfig='nvim ~/.config/nvim/lua/configs'
+alias zshconfig='nvim ~/.zsh_configs.zsh && source ~/.zsh_configs.zsh'
 
-alias notes='cd ~/notes && nvim $(date '+%Y-%m-%d').md'
-
-# --- GIT ---
+# --- git ---
 alias rebase='git fetch origin main:main && git rebase main'
 
-# --- NODE ---
+# --- node ---
 alias npm='pnpm'
 
-# --- ZSH CONFIGS ---
-autoload -Uz compinit && compinit
+# --- zsh configs ---
+autoload -uz compinit && compinit
 
