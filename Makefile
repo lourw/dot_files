@@ -4,7 +4,7 @@ CUR_DIR=$(shell pwd)
 NVIM_PATH=~/.config/nvim
 TMUX_PATH=~/.tmux.conf
 
-setup: setup_nvim setup_tmux
+setup: clean setup_nvim setup_tmux
 
 setup_nvim:
 	ln -s ${CUR_DIR}/nvim ${NVIM_PATH}
