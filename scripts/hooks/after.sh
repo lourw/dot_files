@@ -8,4 +8,3 @@ fi
 
 echo "Adding reference to zshconf to .zshrc"
 grep -qxF "source $TARGET_PATH" ~/.zshrc || echo "source $TARGET_PATH" >> ~/.zshrc
-source ~/.zshrc
