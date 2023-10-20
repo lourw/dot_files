@@ -14,7 +14,6 @@ echo "========================================="
 
 # SCRIPT IMPORTS
 HOOK_HELPER_SCRIPT="./scripts/run_hooks.sh"
-chmod +x "$HOOK_HELPER_SCRIPT"
 source "$HOOK_HELPER_SCRIPT"
 
 if [[ -z $HOME ]]; then
@@ -29,13 +28,12 @@ do
   echo "Adding [$SOURCE_PATH] to [$TARGET_PATH]"  
 
   if [ -L "$TARGET_PATH" ]; then
-    echo "Removing existing link at $TARGET_PATH"
+    echo "-> Removing existing link at $TARGET_PATH"
     rm "$TARGET_PATH"
   fi
 
-  echo "Creating link for $TARGET_PATH"
+  echo "-> Creating link for $TARGET_PATH"
   ln -s "$SOURCE_PATH" "$TARGET_PATH"
-  echo "..."
 done
 
 run_hook "after.sh" "$SOURCE_PATH" "$TARGET_PATH"
