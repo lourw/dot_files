@@ -2,7 +2,8 @@
 CUR_DIR="$(cd "$(dirname -- "$1")" > /dev/null; pwd -P)$(basename -- "$1")"
 
 DOTFILES=(
-  "tmux:tmux.conf:.tmux.conf"
+  # "SOURCE_DIR:SOURCE_FILE:TARGET_FILE"
+  "tmux::.config/tmux"
   "nvim::.config/nvim"
   "zsh:zshconf:.zshconf"
   "fd:fdignore:.fdignore"

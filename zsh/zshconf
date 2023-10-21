@@ -1,7 +1,7 @@
 # ==========================
 # --- CONFIGS START HERE ---
 # ==========================
-#
+
 # --- ALIASES ---
 alias df='cd ~/.config/dot_files'
 alias e='nvim'
