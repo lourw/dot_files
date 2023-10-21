@@ -6,6 +6,6 @@ if [[ -z $SOURCE_PATH || -z $TARGET_PATH ]]; then
   exit 0
 fi
 
-echo "-> Adding reference to zshconf to .zshrc"
+echo "-> Adding reference to $TARGET_PATH to .zshrc"
 grep -qxF "source $TARGET_PATH" ~/.zshrc || echo "source $TARGET_PATH" >> ~/.zshrc
-echo "-> Update your shell by running \`source ~/.zshrc\`"
+echo "-> TODO: Update your shell by running \`source ~/.zshrc\`"

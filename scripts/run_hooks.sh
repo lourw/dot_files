@@ -1,14 +1,14 @@
 run_hook() {
   HOOK_FILE_NAME="$1"
-  SOURCE_PATH="$2"
-  TARGET_PATH="$3"
+  SOURCE_DIR="$2"
+  SOURCE_PATH="$3"
+  TARGET_PATH="$4"
   
-  if [ -d "./hooks" ]; then
-    echo "No Hooks Detected"
+  if [ ! -d "$SOURCE_DIR/hooks" ]; then
     return 0
   fi
 
-  HOOK_PATH="$CUR_DIR/scripts/hooks/$HOOK_FILE_NAME"
+  HOOK_PATH="$SOURCE_DIR/hooks/$HOOK_FILE_NAME"
   if [ -f "$HOOK_PATH" ]; then
     echo "Executing hook: [$HOOK_FILE_NAME]"
     chmod +x "$HOOK_PATH"
