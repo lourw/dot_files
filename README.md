@@ -10,6 +10,8 @@ To install all configs, just run `./install.sh`
 - fzf
 - ripgrep
 - fd
+- bc
+- git
 - k9s
 - tmux
 - lazygit
