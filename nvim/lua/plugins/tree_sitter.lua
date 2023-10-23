@@ -7,6 +7,9 @@ return {
         autotag = {
           enable = true,
         },
+        highlight = {
+          enable = true,
+        }
       }
     end
   }

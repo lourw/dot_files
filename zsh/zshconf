@@ -5,6 +5,7 @@
 # --- ALIASES ---
 alias df='cd ~/.config/dot_files'
 alias e='nvim'
+alias f='nvim $(fd . | fzf)'
 alias h='cd ~'
 alias fcd='cd $(fd -L --type d . ~ | fzf)'
 alias ls="ls --color=auto"
@@ -25,3 +26,4 @@ alias npm='pnpm'
 # --- zsh configs ---
 autoload -Uz compinit && compinit
 
+export EDITOR=nvim
