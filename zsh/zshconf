@@ -23,6 +23,9 @@ alias rebase='git fetch origin main:main && git rebase main'
 # --- node ---
 alias npm='pnpm'
 
+# --- PATH ---
+export PATH="$HOME/.config/tmux/plugins/tmuxifier/bin:$PATH"
+
 # --- zsh configs ---
 autoload -Uz compinit && compinit
 
