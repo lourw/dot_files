@@ -7,6 +7,7 @@ DOTFILES=(
   "nvim::.config/nvim"
   "zsh:zshconf:.zshconf"
   "fd:fdignore:.fdignore"
+  "alacritty::.config/alacritty"
 )
 
 echo "Running setup script for dot env files..."
