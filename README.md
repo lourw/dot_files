@@ -6,6 +6,7 @@ To install all configs, just run `./install.sh`
 
 # List of tools to install on a new machine
 
+- wezterm (or Alacritty)
 - neovim
 - fzf
 - ripgrep
