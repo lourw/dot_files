@@ -5,17 +5,20 @@
 # --- ALIASES ---
 alias df='cd ~/.config/dot_files'
 alias e='nvim'
-alias f='nvim $(fd . | fzf)'
 alias h='cd ~'
-alias fcd='cd $(fd -L --type d . ~ | fzf)'
 alias ls="ls --color=auto"
 alias notes='cd ~/notes && nvim $(date '+%y-%m-%d').md'
 alias precommit-config='nvim .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit'
 alias sane='stty sane'
 alias tmuxconfig='nvim ~/.tmux.conf'
-alias vim='nvim'
 alias vimconfig='nvim ~/.config/nvim/lua/configs'
 alias zshconfig='nvim ~/.zshconf && source ~/.zshrc'
+
+# --- ALIASES FOR TOOLS ---
+alias cat='bat'
+alias fcd='cd $(fd -L --type d . ~ | fzf)'
+alias f='nvim $(fd . | fzf)'
+alias vim='nvim'
 
 # --- git ---
 alias rebase='git fetch origin main:main && git rebase main'

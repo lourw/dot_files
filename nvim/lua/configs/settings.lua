@@ -15,3 +15,4 @@ vim.opt.termguicolors = true
 vim.opt.wrap = true
 vim.opt.wildmode = 'longest:full,full'
 vim.opt.wildmenu = true
+vim.opt.clipboard = unnamed
