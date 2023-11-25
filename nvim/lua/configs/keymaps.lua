@@ -6,8 +6,8 @@ vim.keymap.set('n', '<Leader>b', ':b#<Cr>', { desc = "Goto Previous Buffer" })
 
 vim.keymap.set('n', '<Leader>q', ':q<Cr>', { desc = "Quit Buffer" })
 vim.keymap.set('n', '<Leader>t', ':terminal<Cr>', { desc = "Terminal" })
-vim.keymap.set('n', '<Leader>w', ':write<Cr>', { desc = "Write Buffer" })
-vim.keymap.set('n', '<Leader>o', ':Oil<Cr>', { desc = "Open Filesystem"})
+vim.keymap.set('n', '<Leader>w', ':update<Cr>', { desc = "Write Buffer" })
+vim.keymap.set('n', '<Leader>o', ':Oil --float<Cr>', { desc = "Open Filesystem"})
 
 vim.keymap.set('n', 'Wj', '<c-w>j')
 vim.keymap.set('n', 'Wh', '<c-w>h')
