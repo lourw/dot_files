@@ -14,6 +14,7 @@
   "marks.nvim": { "branch": "master", "commit": "76aca5069c5ce5c0099e30168649e6393e494f26" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "a5476087db0a20c05bd1163e1cd4a29b795e73a7" },
   "mason.nvim": { "branch": "main", "commit": "41e75af1f578e55ba050c863587cffde3556ffa6" },
+  "neorg": { "branch": "main", "commit": "bf3daa2229c60f92f48ac6d7db3049b65fd01371" },
   "nightfly": { "branch": "master", "commit": "06ad2689ebd251a71c6caeb9fb47e231773c9b47" },
   "nvim-autopairs": { "branch": "master", "commit": "0f04d78619cce9a5af4f355968040f7d675854a1" },
   "nvim-cmp": { "branch": "main", "commit": "0b751f6beef40fd47375eaf53d3057e0bfa317e4" },
