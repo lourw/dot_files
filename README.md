@@ -2,27 +2,8 @@
 This is my personal repo for UNIX/LINUX systems that I work with. I don't like having to reconfigure my environment everytime I switch devices so I put them all here. 
 
 ## Setup 
+Install Nix package manager with `sh <(curl -L https://nixos.org/nix/install) --daemon` from [Nix Download](https://nixos.org/download)
+Install home-manager with the following command `nix run home-manager -- init --switch`
 To install all configs, just run `./install.sh`
+Switch home-manager to the configuration in this repo `home-manager switch --impure`. Since nix is functional, commands to grab values from ENV variables are considered 'impure', we need the flag to ensure we can find the system's username and home path.
 
-# List of tools to install on a new machine
-We are using nix with home-manager to create our environments each time. To create an environment with relevant tools installed, use `home-manager switch --impure`
-
-- Kubernetes 
-    - k9s: CLI tool for visualizing and manipulating k8s resources
-    - kubectl: CLI for interacting with a k8s cluster
-    - krew: kubectl plugin manager
-
-- Terminal
-    - bat: revamped `cat` with syntax highlighting
-    - tmux: tiling window manager
-    - fzf: fuzzy finder
-    - ripgrep: text searcher
-    - fd: improved file find
-
-- Git
-    - git: version controlk
-    - lazygit: GUI for git 
-
-- Essentials
-    - neovim: text editor
-    - wezterm: configurable terminal

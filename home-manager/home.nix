@@ -4,22 +4,26 @@
   home.username = builtins.getEnv "USER";
   home.homeDirectory = builtins.getEnv "HOME";
 
-  home.stateVersion = "23.11"; # Please read the comment before changing.
+  home.stateVersion = "23.11";
 
   home.packages = [
-    pkgs.bat
-    pkgs.fd
-    pkgs.fzf
+    pkgs.bat        # better cat
+    pkgs.fd         # better find
+    pkgs.fzf        # fuzzy finder
     pkgs.git
-    pkgs.k9s
-    pkgs.lazygit
-    pkgs.neovim
-    pkgs.ripgrep
-    pkgs.tldr
-    pkgs.tmux
-    pkgs.wget
+    pkgs.k9s        # kubernetes cli
+    pkgs.kubectl    # kubernetes cli
+    pkgs.krew       # kubernetes plugin manager
+    pkgs.lazygit    # git ui
+    pkgs.neovim     # better vim
+    pkgs.ripgrep    # better grep
+    pkgs.tldr       # better man
+    pkgs.tmux       # better screen
+    pkgs.wezterm    # better terminal
+    pkgs.wget       # better curl
 
-    pkgs.meslo-lgs-nf
+
+    pkgs.meslo-lgs-nf   # NERDfont 
   ];
 
   fonts.fontconfig.enable = true;
@@ -29,11 +33,14 @@
     enableCompletion = true;
     enableAutosuggestions = true;
     syntaxHighlighting.enable = true;
-    initExtra = ''
+    
+    initExtraFirst = ''
       # p10k instant prompt
       P10K_INSTANT_PROMPT="$XDG_CACHE_HOME/p10k-instant-prompt-''${(%):-%n}.zsh"
       [[ ! -r "$P10K_INSTANT_PROMPT" ]] || source "$P10K_INSTANT_PROMPT"
+    '';
 
+    initExtra = ''
       # p10k configureation file
       source ~/.config/home-manager/config/p10k.zsh
       
