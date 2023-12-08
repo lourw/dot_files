@@ -5,6 +5,7 @@ This is my personal repo for UNIX/LINUX systems that I work with. I don't like h
 To install all configs, just run `./install.sh`
 
 # List of tools to install on a new machine
+We are using nix with home-manager to create our environments each time. To create an environment with relevant tools installed, use `home-manager switch --impure`
 
 - Kubernetes 
     - k9s: CLI tool for visualizing and manipulating k8s resources

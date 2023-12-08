@@ -9,6 +9,8 @@ DOTFILES=(
   "fd:fdignore:.fdignore"
   # "alacritty::.config/alacritty"
   "wezterm::.config/wezterm"
+  "nix::.config/nix"
+  "home-manager::.config/home-manager"
 )
 
 echo "Running setup script for dot env files..."
