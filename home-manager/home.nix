@@ -22,6 +22,10 @@
     pkgs.wezterm    # better terminal
     pkgs.wget       # better curl
 
+    pkgs.rustup
+
+    pkgs.nodePackages_latest.pnpm
+    pkgs.nodejs
 
     pkgs.meslo-lgs-nf   # NERDfont 
   ];
