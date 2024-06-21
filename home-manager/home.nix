@@ -24,8 +24,8 @@
 
     pkgs.rustup
 
-    pkgs.nodePackages_latest.pnpm
-    pkgs.nodejs
+    pkgs.corepack_20
+    pkgs.nodejs_20
 
     pkgs.meslo-lgs-nf   # NERDfont 
   ];

@@ -12,7 +12,7 @@ vim.keymap.set('n', '<Leader>o', ':Oil<Cr>', { desc = "Open Filesystem"})
 vim.keymap.set('n', 'Wj', '<c-w>j')
 vim.keymap.set('n', 'Wh', '<c-w>h')
 vim.keymap.set('n', 'Wk', '<c-w>k')
-vim.keymap.set('n', 'Wj', '<c-w>j')
+vim.keymap.set('n', 'Wl', '<c-w>l')
 
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Escape Terminal Mode" })
 vim.keymap.set("v", "y", "myy`y", { desc = "Keep Cursor In Place on Yank"})
