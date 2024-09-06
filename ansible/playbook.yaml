@@ -1,0 +1,19 @@
+- name: MacOS Playbook
+  hosts: localhost
+  vars: 
+    dot_files_path: ~/.config/dot_files
+    config_path: ~/.config
+    playbook_path: ~/.config/dot_files/ansible
+  tasks:
+    - name: Print message
+      ansible.builtin.debug:
+        msg: Hello world
+
+    - name: Setup config files
+      include_tasks: "{{ playbook_path }}/tasks/setup.yaml"
+
+    - name: Install tpm for tmux
+      include_tasks: "{{ playbook_path }}/tasks/tmux.yaml"
+
+    - name: Link .zshconf to .zshrc
+      include_tasks: "{{ playbook_path }}/tasks/zsh.yaml"

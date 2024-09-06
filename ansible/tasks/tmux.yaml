@@ -1,0 +1,12 @@
+- name: Ensure that tpm directory exists
+  file:
+    path: "{{ dot_files_path }}/tmux/plugins"
+    state: directory
+    recurse: yes
+
+- name: Clone tpm into plugins folder
+  git: 
+    repo: 'https://github.com/tmux-plugins/tpm'
+    dest: "{{ dot_files_path }}/tmux/plugins/tpm"
+    force: yes
+    update: yes

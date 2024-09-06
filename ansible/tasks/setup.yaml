@@ -1,0 +1,31 @@
+# Setup symlinks such that all config files in repo get placed
+# where they are supposed to be
+- name: Setup nvim
+  file:
+    src: "{{ dot_files_path }}/nvim"
+    dest: "{{ config_path }}/nvim"
+    state: link
+
+- name: Setup tmux
+  file:
+    src: "{{ dot_files_path }}/tmux"
+    dest: "{{ config_path }}/tmux"
+    state: link
+
+- name: Setup zsh
+  file:
+    src: "{{ dot_files_path }}/zsh/zshconf"
+    dest: ~/.zshconf
+    state: link
+
+- name: Setup fd (find)
+  file: 
+    src: "{{ dot_files_path }}/fd/fdignore"
+    dest: ~/.fdignore
+    state: link
+
+- name: Setup Wezterm
+  file:
+    src: "{{ dot_files_path }}/wezterm"
+    dest: "{{ config_path }}/wezterm"
+    state: link
