@@ -1,0 +1,13 @@
+- name: Install packages via homebrew
+  community.general.homebrew:
+    state: present
+    update_homebrew: true
+    name:
+      - bat
+      - mise
+      - neovim
+      - watch
+      - tmux
+      - fzf
+      - kubectl
+      - k9s

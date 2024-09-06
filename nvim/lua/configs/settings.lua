@@ -17,3 +17,6 @@ vim.opt.wildmode = 'longest:full,full'
 vim.opt.wildmenu = true
 vim.opt.clipboard = unnamed
 vim.opt.undofile = true
+
+vim.opt.iskeyword:append("_")
+vim.opt.iskeyword:append("-")

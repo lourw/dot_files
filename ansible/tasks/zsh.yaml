@@ -1,6 +1,9 @@
 - name: Add zshconf to .zshrc
   lineinfile:
     path: ~/.zshrc
-    line: 'source ~/.zshconf'
+    line: "source ~/.zshconf"
     state: present
     create: yes
+
+- name: Source ~/.zshrc
+  setup:

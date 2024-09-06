@@ -35,3 +35,5 @@ alias debug='kubectl run debug --image ubuntu -- sleep 3600'
 alias ports='lsof -i -P -n | grep LISTEN'
 
 export EDITOR=nvim
+export PATH="~/.local/share/mise/shims:$PATH"
+eval "$(mise activate zsh)"

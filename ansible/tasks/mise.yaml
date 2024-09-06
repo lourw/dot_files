@@ -1,0 +1,20 @@
+- name: Set variables
+  set_fact:
+    node_version: node@21
+    python_version: python@3.12
+
+- name: Setup node version
+  command: "mise install {{ node_version }}"
+
+- name: Set global node version
+  command: "mise use --global {{ node_version }}"
+
+- name: Setup python version
+  command: "mise use --global {{ python_version }}"
+
+- name: Activate mise
+  lineinfile:
+    path: "{{ zsh_file }}"
+    line: 'eval "$(mise activate zsh)"'
+    state: present
+    create: yes
