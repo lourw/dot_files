@@ -11,3 +11,12 @@
       - fzf
       - kubectl
       - k9s
+      - wezterm
+      - powerlevel10k
+      - zsh-autosuggestions
+      - fd
+  register: changed_pkgs
+
+- name: Print changed packages
+  debug: 
+    msg: "{{ changed_pkgs }}"

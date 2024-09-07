@@ -5,5 +5,22 @@
     state: present
     create: yes
 
-- name: Source ~/.zshrc
-  setup:
+- name: Add powerlevel10k to zsh
+  lineinfile:
+    path: ~/.zshrc
+    line: source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
+    state: present
+    create: yes
+
+- name: Add zsh autosuggestions to zsh
+  lineinfile:
+    path: ~/.zshrc
+    line: source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    state: present
+
+- name: Add fzf to zsh
+  lineinfile:
+    path: ~/.zshrc
+    line: source <(fzf --zsh)
+    state: present
+
