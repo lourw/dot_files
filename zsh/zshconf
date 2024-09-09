@@ -28,6 +28,11 @@ alias rebase='git fetch origin main:main && git rebase main'
 export PATH="$HOME/.config/tmux/plugins/tmuxifier/bin:$PATH"
 
 # --- zsh configs ---
+# Configure colors with zsh
+autoload -U promptinit && promptinit
+autoload -U colors && colors
+PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
+# Use two tabs to accept autosuggest
 bindkey '\t\t' autosuggest-accept
 
 # --- Kubernetes ---

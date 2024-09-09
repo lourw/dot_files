@@ -18,6 +18,12 @@
     line: source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
     state: present
 
+- name: Add syntax highlighting to zsh
+  lineinfile:
+    path: ~/.zshrc
+    line: source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    state: present
+
 - name: Add fzf to zsh
   lineinfile:
     path: ~/.zshrc

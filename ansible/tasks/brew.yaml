@@ -3,6 +3,7 @@
     state: present
     update_homebrew: true
     name:
+      - poetry
       - bat
       - mise
       - neovim
@@ -15,6 +16,10 @@
       - powerlevel10k
       - zsh-autosuggestions
       - fd
+      - zig
+      - tree
+      - elixir
+      - erlang
   register: changed_pkgs
 
 - name: Print changed packages

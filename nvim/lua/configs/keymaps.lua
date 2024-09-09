@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = ','
 
 vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
 vim.keymap.set("n", ":Q", ":q!", { desc = "Exit" })
@@ -16,3 +17,6 @@ vim.keymap.set('n', 'Wl', '<c-w>l')
 
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Escape Terminal Mode" })
 vim.keymap.set("v", "y", "myy`y", { desc = "Keep Cursor In Place on Yank"})
+
+vim.keymap.set("v", ">", ">gv")
+vim.keymap.set("v", "<", "<gv")
