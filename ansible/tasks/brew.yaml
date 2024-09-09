@@ -15,13 +15,14 @@
       - wezterm
       - powerlevel10k
       - zsh-autosuggestions
+      - zsh-syntax-highlighting
       - fd
       - zig
       - tree
       - elixir
       - erlang
       - luarocks
-      - gcc-14 # Needed for macs such that treesitter can download parser for neorg(norg)
+      - gcc@14 # Needed for macs such that treesitter can download parser for neorg(norg)
   register: changed_pkgs
 
 - name: Print changed packages

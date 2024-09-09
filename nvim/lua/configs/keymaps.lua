@@ -18,5 +18,5 @@ vim.keymap.set('n', 'Wl', '<c-w>l')
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Escape Terminal Mode" })
 vim.keymap.set("v", "y", "myy`y", { desc = "Keep Cursor In Place on Yank"})
 
-vim.keymap.set("v", ">", ">gv")
+vim.keymap.set("v", ">", ">gv", { desc = "Stay in visual mode when indenting" })
 vim.keymap.set("v", "<", "<gv")

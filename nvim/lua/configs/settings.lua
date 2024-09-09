@@ -17,6 +17,8 @@ vim.opt.wildmode = 'longest:full,full'
 vim.opt.wildmenu = true
 vim.opt.clipboard = unnamed
 vim.opt.undofile = true
+vim.opt.conceallevel = 2 -- used for Neorg concealer
 
+-- make vim recognize - and _ in variables as while words
 vim.opt.iskeyword:append("_")
 vim.opt.iskeyword:append("-")
