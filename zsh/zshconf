@@ -1,6 +1,7 @@
 # ==========================
 # --- CONFIGS START HERE ---
 # ==========================
+set -o vi
 
 # --- ALIASES ---
 alias df='cd ~/.config/dot_files'

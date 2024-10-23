@@ -3,26 +3,27 @@
     state: present
     update_homebrew: true
     name:
-      - poetry
       - bat
-      - mise
-      - neovim
-      - watch
-      - tmux
-      - fzf
-      - kubectl
-      - k9s
-      - wezterm
-      - powerlevel10k
-      - zsh-autosuggestions
-      - zsh-syntax-highlighting
-      - fd
-      - zig
-      - tree
       - elixir
       - erlang
-      - luarocks
+      - fd
+      - fzf
       - gcc@14 # Needed for macs such that treesitter can download parser for neorg(norg)
+      - k9s
+      - kubectl
+      - luarocks
+      - mise
+      - neovim
+      - poetry
+      - powerlevel10k
+      - ripgrep
+      - tmux
+      - tree
+      - watch
+      - wezterm
+      - zig
+      - zsh-autosuggestions
+      - zsh-syntax-highlighting
   register: changed_pkgs
 
 - name: Print changed packages
