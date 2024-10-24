@@ -2,6 +2,7 @@
   set_fact:
     node_version: node@21
     python_version: python@3.12
+    go_version: go@1.23
 
 - name: Setup node version
   command: "mise install {{ node_version }}"
@@ -11,6 +12,9 @@
 
 - name: Setup python version
   command: "mise use --global {{ python_version }}"
+
+- name: Setup go version
+  command: "mise use --global {{ go_version }}"
 
 - name: Activate mise
   lineinfile:
