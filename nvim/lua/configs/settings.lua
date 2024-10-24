@@ -15,7 +15,7 @@ vim.opt.termguicolors = true
 vim.opt.wrap = true
 vim.opt.wildmode = 'longest:full,full'
 vim.opt.wildmenu = true
-vim.opt.clipboard = unnamed
+vim.opt.clipboard = 'unnamedplus'
 vim.opt.undofile = true
 vim.opt.conceallevel = 2 -- used for Neorg concealer
 
