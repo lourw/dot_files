@@ -5,7 +5,6 @@
     name:
       - bat
       - elixir
-      - erlang
       - fd
       - fzf
       - gcc@14 # Needed for macs such that treesitter can download parser for neorg(norg)
