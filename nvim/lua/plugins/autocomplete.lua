@@ -1,3 +1,5 @@
+-- Autocomplete plugins for LSP
+
 return {
 	{ 'hrsh7th/nvim-cmp' },
 	{ 'hrsh7th/cmp-nvim-lsp' },
