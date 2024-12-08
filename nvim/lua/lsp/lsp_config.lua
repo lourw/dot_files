@@ -1,7 +1,16 @@
 -- Setup language servers.
 local lspconfig = require('lspconfig')
+
 lspconfig.pyright.setup {}
-lspconfig.rust_analyzer.setup {}
+lspconfig.rust_analyzer.setup {
+  settings = {
+    ['rust-analyzer'] = { 
+      diagnostics = {
+        enable = true;
+      }
+    }
+  }
+}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -17,6 +26,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
     -- Enable completion triggered by <c-x><c-o>
     vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+    vim.lsp.inlay_hint.enable(true, {ev.buf})
+    vim.keymap.set('n', '<Leader>gti', function()
+      if vim.lsp.inlay_hint.is_enabled({ev.buf}) then 
+        vim.lsp.inlay_hint.enable(false, {ev.buf})
+      else
+        vim.lsp.inlay_hint.enable(true, {ev.buf})
+      end
+    end, { desc = "Toggle Inlay Hints" })
 
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
