@@ -1,3 +1,4 @@
+-- Used to navigate with multiple windows
 return {
   "yorickpeterse/nvim-window",
   keys = {

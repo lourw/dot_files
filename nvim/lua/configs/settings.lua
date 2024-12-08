@@ -17,7 +17,13 @@ vim.opt.wildmode = 'longest:full,full'
 vim.opt.wildmenu = true
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.undofile = true
-vim.opt.conceallevel = 2 -- used for Neorg concealer
+
+-- used for Neorg concealer, used to hide things like quotes in json files
+vim.opt.conceallevel = 2 
+vim.opt.textwidth = 100
+
+-- make long text break using new line instead of cutting off word
+vim.opt.linebreak = true
 
 -- make vim recognize - and _ in variables as while words
 vim.opt.iskeyword:append("_")
