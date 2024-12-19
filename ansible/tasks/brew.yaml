@@ -15,6 +15,7 @@
       - neovim
       - poetry
       - powerlevel10k
+      - raycast
       - ripgrep
       - tmux
       - tree
