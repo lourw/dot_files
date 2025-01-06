@@ -5,6 +5,11 @@
     state: present
     create: yes
 
+- name: Add utils.sh to .zshrc
+  lineinfile:
+    path: ~/.zshrc
+    line: "source {{ config_path }}/utils.sh"
+
 - name: Add powerlevel10k to zsh
   lineinfile:
     path: ~/.zshrc

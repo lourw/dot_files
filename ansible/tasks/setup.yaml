@@ -18,6 +18,12 @@
     dest: ~/.zshconf
     state: link
 
+- name: Setup utility functions
+  file:
+    src: "{{ dot_files_path }}/zsh/utils.sh"
+    dest: "{{ config_path }}/utils.sh"
+    state: link
+
 - name: Setup fd (find)
   file: 
     src: "{{ dot_files_path }}/fd/fdignore"

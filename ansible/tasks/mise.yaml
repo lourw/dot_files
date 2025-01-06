@@ -10,6 +10,9 @@
 - name: Set global node version
   command: "mise use --global {{ node_version }}"
 
+- name: Enable Corepack (PNPM)
+  command: "corepack enable"
+
 - name: Setup python version
   command: "mise use --global {{ python_version }}"
 

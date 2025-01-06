@@ -22,6 +22,10 @@ alias fcd='cd $(fd -L --type d . ~ | fzf)'
 alias f='nvim $(fd . | fzf)'
 alias vim='nvim'
 
+# --- ALIASES FOR BASH SCRIPTS ---
+alias killp='kill_process_on_port'
+alias t='test'
+
 # --- git ---
 alias rebase='git fetch origin main:main && git rebase main'
 
