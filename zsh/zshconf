@@ -1,8 +1,6 @@
 # ==========================
 # --- CONFIGS START HERE ---
 # ==========================
-set -o vi
-
 # --- ALIASES ---
 alias df='cd ~/.config/dot_files'
 alias e='nvim'
@@ -47,3 +45,9 @@ alias ports='lsof -i -P -n | grep LISTEN'
 export EDITOR=nvim
 export PATH="~/.local/share/mise/shims:$PATH"
 eval "$(mise activate zsh)"
+
+set -o vi 
+
+# Ensure that backspace in vi mode will delete past inserted characters
+bindkey "^H" backward-delete-char
+bindkey "^?" backward-delete-char
