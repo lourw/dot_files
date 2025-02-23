@@ -10,6 +10,7 @@
       - gcc@14 # Needed for macs such that treesitter can download parser for neorg(norg)
       - k9s
       - kubectl
+      - kubectx
       - lazygit
       - luarocks
       - mise
