@@ -6,10 +6,6 @@
     playbook_path: ~/.config/dot_files/ansible
     zsh_file: ~/.zshconf
   tasks:
-    - name: Print message
-      ansible.builtin.debug:
-        msg: Hello world
-
     - name: Setup homebrew packages
       include_tasks: "{{ playbook_path }}/tasks/brew.yaml"
 

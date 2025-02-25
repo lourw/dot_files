@@ -8,6 +8,7 @@
       - fd
       - fzf
       - gcc@14 # Needed for macs such that treesitter can download parser for neorg(norg)
+      - ghostty
       - k9s
       - kubectl
       - kubectx
@@ -17,7 +18,6 @@
       - neovim
       - poetry
       - powerlevel10k
-      - raycast
       - ripgrep
       - tmux
       - tree
