@@ -11,6 +11,7 @@
   command: "mise use --global {{ node_version }}"
 
 - name: Enable Corepack (PNPM)
+  become: true
   command: "corepack enable"
 
 - name: Setup python version

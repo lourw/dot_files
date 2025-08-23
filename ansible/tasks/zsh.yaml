@@ -10,24 +10,35 @@
     path: ~/.zshrc
     line: "source {{ config_path }}/utils.sh"
 
-- name: Add powerlevel10k to zsh
+- name: Add powerlevel10k to zsh (MacOS)
   lineinfile:
     path: ~/.zshrc
     line: source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
     state: present
     create: yes
+  when: ansible_facts['os_family'] == 'Darwin'
+
+- name: Add powerlevel10k to zsh (Arch)
+  lineinfile:
+    path: ~/.zshrc
+    line: source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+    state: present
+    create: yes
+  when: ansible_facts['distribution'] == 'Archlinux'
 
 - name: Add zsh autosuggestions to zsh
   lineinfile:
     path: ~/.zshrc
     line: source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
     state: present
+  when: ansible_facts['os_family'] == 'Darwin'
 
 - name: Add syntax highlighting to zsh
   lineinfile:
     path: ~/.zshrc
     line: source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     state: present
+  when: ansible_facts['os_family'] == 'Darwin'
 
 - name: Add fzf to zsh
   lineinfile:

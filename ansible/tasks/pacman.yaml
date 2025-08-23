@@ -1,0 +1,31 @@
+- name: Install packages via pacman
+  become: true
+  pacman:
+    state: present
+    update_cache: true
+    name:
+      - bat
+      - elixir
+      - fd
+      - fzf
+      - ghostty
+      - k9s
+      - kubectl
+      - kubectx
+      - lazygit
+      - luarocks
+      - mise
+      - neovim
+      - poetry
+      - ripgrep
+      - tmux
+      - tree
+      - wezterm
+      - zig
+      - zsh-autosuggestions
+      - zsh-syntax-highlighting
+  register: changed_pkgs
+
+- name: Print changed packages
+  debug: 
+    msg: "{{ changed_pkgs }}"
