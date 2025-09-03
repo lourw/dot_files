@@ -18,8 +18,6 @@ vim.opt.wildmenu = true
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.undofile = true
 
--- used for Neorg concealer, used to hide things like quotes in json files
-vim.opt.conceallevel = 2 
 vim.opt.textwidth = 100
 
 -- make long text break using new line instead of cutting off word
