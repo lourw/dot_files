@@ -12,11 +12,11 @@
       // "shift shift": "file_finder::Toggle"
 
       // key bindings to trigger 'television' fuzzy finding searches
-      "ctrl f": [
+      "ctrl-shift-f": [
         "task::Spawn",
         { "task_name": "file_finder", "reveal_target": "center" }
       ],
-      "ctrl g": [
+      "ctrl-shift-g": [
         "task::Spawn",
         { "task_name": "text_finder", "reveal_target": "center" }
       ]
