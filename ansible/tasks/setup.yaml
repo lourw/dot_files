@@ -36,3 +36,9 @@
     dest: "{{ config_path }}/wezterm"
     state: link
 
+- name: Setup Zed
+  file:
+    src: "{{ dot_files_path }}/zed"
+    dest: "{{ config_path }}/zed"
+    state: link
+

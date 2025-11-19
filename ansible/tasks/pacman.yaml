@@ -6,6 +6,7 @@
     name:
       - bat
       - elixir
+      - erlang
       - fd
       - fzf
       - ghostty
