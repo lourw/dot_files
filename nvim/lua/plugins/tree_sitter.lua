@@ -1,3 +1,4 @@
+-- Note: look at `config/lazy_config.lua` for where we look for treesitter compiler
 return {
   { 
     'nvim-treesitter/nvim-treesitter', 
@@ -8,7 +9,6 @@ return {
           "python",
           "rust",
           "go",
-          "norg",
           "typescript",
           "erlang",
           "elixir"
