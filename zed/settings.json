@@ -7,9 +7,6 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "git_panel": {
-    "dock": "right"
-  },
   "buffer_font_family": "JetBrains Mono",
   "vim_mode": true,
   "base_keymap": "JetBrains",

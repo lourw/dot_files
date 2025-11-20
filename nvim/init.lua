@@ -3,7 +3,8 @@ require('configs.keymaps')
 require('configs.settings')
 require('configs.lazy_config')
 
--- Auto-load all LSP configs
+
+-- Autoregister LSP configs
 local lsp_configs = {}
 
 for _, f in pairs(vim.api.nvim_get_runtime_file('lsp/*.lua', true)) do
