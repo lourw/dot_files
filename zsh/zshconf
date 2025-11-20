@@ -12,7 +12,7 @@ alias sane='stty sane'
 alias tmuxconfig='nvim ~/.tmux.conf'
 alias vimconfig='nvim ~/.config/nvim/lua/configs'
 alias zshconfig='nvim ~/.zshconf && source ~/.zshrc'
-alias update-config='ansible-playbook ~/.config/dot_files/ansible/playbook.yaml'
+alias ap='ansible-playbook ~/.config/dot_files/ansible/playbook.yaml --ask-become-pass'
 
 # --- ALIASES FOR TOOLS ---
 alias cat='bat'
