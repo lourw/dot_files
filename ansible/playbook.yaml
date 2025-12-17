@@ -14,6 +14,10 @@
       include_tasks: "{{ playbook_path }}/tasks/pacman.yaml"
       when: ansible_facts['distribution'] == 'Archlinux'
 
+    - name: Setup dnf packages
+      include_tasks: "{{ playbook_path }}/tasks/dnf.yaml"
+      when: ansible_facts['distribution'] == 'Fedora'
+
     - name: Setup config files
       include_tasks: "{{ playbook_path }}/tasks/setup.yaml"
 

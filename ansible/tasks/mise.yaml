@@ -1,6 +1,6 @@
 - name: Set variables
   set_fact:
-    node_version: node@21
+    node_version: node@24
 
 - name: Setup node version
   command: "mise install {{ node_version }}"
