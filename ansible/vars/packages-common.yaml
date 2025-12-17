@@ -1,0 +1,22 @@
+packages_common:
+  - bat
+  - elixir
+  - erlang
+  - fd
+  - fzf
+  - ghostty
+  - k9s
+  - kubectl
+  - kubectx
+  - lazygit
+  - luarocks
+  - mise
+  - neovim
+  - poetry
+  - ripgrep
+  - tmux
+  - tree
+  - wezterm
+  - zig
+  - zsh-autosuggestions
+  - zsh-syntax-highlighting

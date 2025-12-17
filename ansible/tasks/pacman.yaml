@@ -3,28 +3,7 @@
   pacman:
     state: present
     update_cache: true
-    name:
-      - bat
-      - elixir
-      - erlang
-      - fd
-      - fzf
-      - ghostty
-      - k9s
-      - kubectl
-      - kubectx
-      - lazygit
-      - luarocks
-      - mise
-      - neovim
-      - poetry
-      - ripgrep
-      - tmux
-      - tree
-      - wezterm
-      - zig
-      - zsh-autosuggestions
-      - zsh-syntax-highlighting
+    name: "{{ packages_common + packages_pacman }}"
   register: changed_pkgs
 
 - name: Print changed packages

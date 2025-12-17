@@ -1,10 +1,16 @@
 - name: Ansible Playbook
   hosts: localhost
   vars:
-    dot_files_path: "{{ ansible_user_dir }}/.config/dot_files"
-    config_path: "{{ ansible_user_dir }}/.config"
-    playbook_path: "{{ ansible_user_dir }}/.config/dot_files/ansible"
-    zsh_file: "{{ ansible_user_dir }}/.zshconf"
+    dot_files_path: "{{ ansible_facts['user_dir'] }}/.config/dot_files"
+    config_path: "{{ ansible_facts['user_dir'] }}/.config"
+    playbook_path: "{{ ansible_facts['user_dir'] }}/.config/dot_files/ansible"
+    zsh_file: "{{ ansible_facts['user_dir'] }}/.zshconf"
+  pre_tasks:
+    - name: Load package variables
+      include_vars:
+        dir: "{{ playbook_path }}/vars"
+        extensions:
+          - yaml
   tasks:
     - name: Setup homebrew packages
       include_tasks: "{{ playbook_path }}/tasks/brew.yaml"

@@ -2,29 +2,7 @@
   community.general.homebrew:
     state: present
     update_homebrew: true
-    name:
-      - bat
-      - elixir
-      - fd
-      - fzf
-      - ghostty
-      - k9s
-      - kubectl
-      - kubectx
-      - lazygit
-      - luarocks
-      - mise
-      - neovim
-      - poetry
-      - powerlevel10k
-      - ripgrep
-      - tmux
-      - tree
-      - watch
-      - wezterm
-      - zig
-      - zsh-autosuggestions
-      - zsh-syntax-highlighting
+    name: "{{ packages_common + packages_brew }}"
   register: changed_pkgs
 
 - name: Print changed packages
