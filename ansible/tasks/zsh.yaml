@@ -14,7 +14,7 @@
   lineinfile:
     path: ~/.zshrc
     line: |
-      {% if ansible_facts['os_family'] == 'Darwin' %}
+      {% if ansible_facts['distribution'] == 'MacOSX' %}
       source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
       {% else %}
       source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
@@ -26,8 +26,10 @@
   lineinfile:
     path: ~/.zshrc
     line: |
-      {% if ansible_facts['os_family'] == 'Darwin' %}
+      {% if ansible_facts['distribution'] == 'MacOSX'  %}
       source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+      {% elif ansible_facts['distribution'] == 'Fedora' %}
+      source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
       {% else %}
       source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
       {% endif %}
@@ -37,8 +39,10 @@
   lineinfile:
     path: ~/.zshrc
     line: |
-      {% if ansible_facts['os_family'] == 'Darwin' %}
+      {% if ansible_facts['distribution'] == 'MacOSX' %}
       source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+      {% elif ansible_facts['distribution'] == 'Fedora' %}
+      source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
       {% else %}
       source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
       {% endif %}

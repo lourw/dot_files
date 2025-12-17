@@ -1,3 +1,7 @@
+###
+# Before using fedora, you will probably need to setup Terra in addition to using DNF
+###
+
 - name: Install packages via dnf
   become: true
   dnf:
