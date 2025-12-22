@@ -35,3 +35,6 @@
 
     - name: Link .zshconf to .zshrc
       include_tasks: "{{ playbook_path }}/tasks/zsh.yaml"
+    
+    - name: Setup AI tooling
+      include_tasks: "{{ playbook_path }}/tasks/ai.yaml"

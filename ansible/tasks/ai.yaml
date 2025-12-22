@@ -1,0 +1,7 @@
+- name: Setup claude
+  file:
+    src: "{{ dot_files_path }}/ai/claude"
+    dest: "~/.claude"
+    state: link
+
+
