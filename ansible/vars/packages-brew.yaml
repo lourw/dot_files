@@ -1,3 +1,4 @@
 packages_brew:
   - powerlevel10k
   - watch
+  - helix

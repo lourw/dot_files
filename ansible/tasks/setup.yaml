@@ -6,6 +6,12 @@
     dest: "{{ config_path }}/nvim"
     state: link
 
+- name: Setup helix
+  file:
+    src: "{{ dot_files_path }}/helix"
+    dest: "{{ config_path }}/helix"
+    state: link
+    
 - name: Setup tmux
   file:
     src: "{{ dot_files_path }}/tmux"
