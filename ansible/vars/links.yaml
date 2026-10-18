@@ -4,6 +4,7 @@ dotfile_links:
   - { src: "{{ dot_files_path }}/nvim", dest: "{{ config_path }}/nvim" }
   - { src: "{{ dot_files_path }}/helix", dest: "{{ config_path }}/helix" }
   - { src: "{{ dot_files_path }}/tmux", dest: "{{ config_path }}/tmux" }
+  - { src: "{{ dot_files_path }}/theme", dest: "{{ config_path }}/theme" }
   - { src: "{{ dot_files_path }}/zsh/zshconf", dest: "{{ home_path }}/.zshconf" }
   - { src: "{{ dot_files_path }}/zsh/utils.sh", dest: "{{ config_path }}/utils.sh" }
   - { src: "{{ dot_files_path }}/fd", dest: "{{ config_path }}/fd" }
