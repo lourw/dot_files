@@ -33,10 +33,69 @@ alias rebase='git fetch origin main:main && git rebase main'
 export PATH="$HOME/.config/tmux/plugins/tmuxifier/bin:$PATH"
 
 # --- zsh configs ---
-# Configure colors with zsh
-autoload -U promptinit && promptinit
-autoload -U colors && colors
-PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
+HISTFILE=~/.zsh_history
+HISTSIZE=50000
+SAVEHIST=50000
+setopt share_history hist_ignore_all_dups hist_ignore_space hist_reduce_blanks
+
+autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
+# --- prompt ---
+# Powerline segments in three shades: a green icon block, the folder in light grey, then
+# in the tmux inactive-tab colours the worktree name (inside a linked worktree) and the
+# git branch (! unstaged, + staged); the prompt char goes on its own line and turns red
+# after a failed command
+autoload -Uz vcs_info add-zsh-hook
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' unstagedstr ' !'
+zstyle ':vcs_info:git:*' stagedstr ' +'
+zstyle ':vcs_info:git:*' formats '%b%c%u'
+zstyle ':vcs_info:git:*' actionformats '%b|%a%c%u'
+# hex colours need a truecolor terminal; otherwise use the nearest 256 colour
+[[ $COLORTERM == (24bit|truecolor) ]] || zmodload zsh/nearcolor
+
+_prompt_precmd() {
+  vcs_info
+  local end=#3b4261
+  PROMPT='%K{green}%F{#16161e}  %F{green}%K{#3b4261}%F{#c0caf5}  %3~ '
+  if [[ -n $vcs_info_msg_0_ ]]; then
+    end=#292e42
+    PROMPT+='%F{#3b4261}%K{#292e42}%F{#a9b1d6} '
+    # in a linked worktree the git dir differs from the shared one; show its name
+    local -a git_dirs=("${(@f)$(git rev-parse --git-dir --git-common-dir --show-toplevel 2>/dev/null)}")
+    if [[ ${git_dirs[1]:A} != ${git_dirs[2]:A} ]]; then
+      PROMPT+="󰙅 ${${git_dirs[3]:t}//\%/%%} %F{#565f89}%F{#a9b1d6} "
+    fi
+    PROMPT+=" ${vcs_info_msg_0_//\%/%%} "
+  fi
+  PROMPT+="%k%F{$end}%f"
+  PROMPT+=$'\n''%(?.%F{green}.%F{red})❯%f '
+  _prompt_full=$PROMPT
+}
+add-zsh-hook precmd _prompt_precmd
+
+# Transient prompt: once a command is entered (or the line is cancelled with ctrl-c),
+# redraw its prompt as just the prompt char so scrollback stays compact. precmd doesn't
+# run after ctrl-c, so each new line restores the full prompt itself.
+_prompt_transient() {
+  PROMPT='%(?.%F{green}.%F{red})❯%f '
+  zle reset-prompt
+}
+_prompt_restore() {
+  [[ $PROMPT == $_prompt_full ]] && return
+  PROMPT=$_prompt_full
+  zle reset-prompt
+}
+TRAPINT() {
+  zle && _prompt_transient
+  return $(( 128 + $1 ))
+}
+autoload -Uz add-zle-hook-widget
+add-zle-hook-widget zle-line-finish _prompt_transient
+add-zle-hook-widget zle-line-init _prompt_restore
 # Use two tabs to accept autosuggest
 bindkey '\t\t' autosuggest-accept
 
