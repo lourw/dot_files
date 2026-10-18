@@ -29,6 +29,10 @@
       include_tasks: "{{ playbook_path }}/tasks/apt.yaml"
       when: ansible_facts['os_family'] == 'Debian'
 
+    - name: Install Nerd Font
+      include_tasks: "{{ playbook_path }}/tasks/fonts.yaml"
+      when: ansible_facts['distribution'] == 'Fedora' or ansible_facts['os_family'] == 'Debian'
+
     - name: Setup config files
       include_tasks: "{{ playbook_path }}/tasks/setup.yaml"
 

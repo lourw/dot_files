@@ -1,1 +1,2 @@
-packages_pacman: []
+packages_pacman:
+  - ttf-meslo-nerd

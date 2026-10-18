@@ -1,0 +1,18 @@
+# Debian/Ubuntu and Fedora don't package Meslo Nerd Font, so fetch it from the Nerd Fonts
+# releases (Arch and macOS install it as a package)
+- name: Create the Meslo Nerd Font directory
+  file:
+    path: "{{ home_path }}/.local/share/fonts/MesloNerdFont"
+    state: directory
+
+- name: Download Meslo Nerd Font
+  unarchive:
+    src: "https://github.com/ryanoasis/nerd-fonts/releases/download/{{ nerd_fonts_version }}/Meslo.tar.xz"
+    remote_src: true
+    dest: "{{ home_path }}/.local/share/fonts/MesloNerdFont"
+    creates: "{{ home_path }}/.local/share/fonts/MesloNerdFont/MesloLGSNerdFont-Regular.ttf"
+  register: meslo
+
+- name: Refresh the font cache
+  command: fc-cache -f "{{ home_path }}/.local/share/fonts"
+  when: meslo.changed

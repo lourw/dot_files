@@ -1,6 +1,8 @@
 packages_apt:
   - curl # for the mise installer
+  - fontconfig # fc-cache, for the Nerd Font in tasks/fonts.yaml
   - python3-poetry
+  - xz-utils # unpacks the Nerd Font archive
 # Entries in packages_common that aren't in the Debian/Ubuntu repos (or are named differently)
 packages_apt_exclude:
   - ghostty

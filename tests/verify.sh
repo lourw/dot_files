@@ -58,6 +58,13 @@ if [ "$MODE" = installed ]; then
     check "$tool installed by mise" zsh -ic "cd ~ && mise where $tool"
   done
 
+  echo "Fonts"
+  if [ "$(uname -s)" = Linux ]; then
+    check "MesloLGS Nerd Font installed" bash -c "fc-list | grep -q 'MesloLGS Nerd Font'"
+  else
+    check "MesloLGS Nerd Font installed" test -f "$HOME/Library/Fonts/MesloLGSNerdFont-Regular.ttf"
+  fi
+
   echo "tmux plugins"
   for plugin in tpm tmuxifier tmux-resurrect; do
     check "$plugin" test -d "$CONFIG/tmux/plugins/$plugin"

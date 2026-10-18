@@ -1,4 +1,6 @@
-packages_dnf: []
+packages_dnf:
+  - fontconfig # fc-cache, for the Nerd Font in tasks/fonts.yaml
+  - xz # unpacks the Nerd Font archive
 # Entries in packages_common that aren't available in the Fedora repos
 packages_dnf_exclude:
   - wezterm

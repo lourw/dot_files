@@ -3,7 +3,7 @@ local wezterm = require 'wezterm';
 local module = {}
 
 function module.apply_to_config(config)
-  local_font = "MesloLGS NF"
+  local_font = "MesloLGS Nerd Font"
   config.font_size = 14.0
   
   config.font = wezterm.font(local_font)
