@@ -14,6 +14,9 @@ jobs:
     # tools and directories don't look like a new machine
     container: archlinux:latest
     steps:
+      # Without git, checkout downloads a tarball with no .git, which bootstrap.sh rejects
+      - name: Install git
+        run: pacman -Syu --noconfirm --needed git
       - uses: actions/checkout@v4
       # Runs as root: creates a sudo user and runs tests/e2e.sh as them
       - name: Run e2e test
