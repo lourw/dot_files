@@ -20,7 +20,8 @@ step "Verify installed state"
 bash "$DOTFILES_DIR/tests/verify.sh" installed
 
 step "Re-run the playbook: it should succeed and change nothing"
-recap="$(ansible-playbook "$DOTFILES_DIR/ansible/playbook.yaml" | tee /dev/stderr | grep -A1 '^PLAY RECAP' | tail -1)"
+# tee to the inherited stderr fd: reopening /dev/stderr fails under sudo when it's root's pipe (CI)
+recap="$(ansible-playbook "$DOTFILES_DIR/ansible/playbook.yaml" | tee >(cat >&2) | grep -A1 '^PLAY RECAP' | tail -1)"
 if ! grep -q 'changed=0 .*failed=0' <<<"$recap"; then
   echo "Second run was not idempotent: $recap"
   exit 1
