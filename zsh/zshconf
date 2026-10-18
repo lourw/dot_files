@@ -2,7 +2,9 @@
 # --- CONFIGS START HERE ---
 # ==========================
 # --- ALIASES ---
-alias df='cd ~/.config/dot_files'
+# ~/.zshconf is a symlink into the repo, so resolve the repo location from it
+DOTFILES_DIR="$(dirname "$(dirname "$(readlink -f ~/.zshconf)")")"
+alias df='cd $DOTFILES_DIR'
 alias e='nvim'
 alias h='cd ~'
 alias ls="ls --color=auto"
@@ -12,7 +14,7 @@ alias sane='stty sane'
 alias tmuxconfig='nvim ~/.tmux.conf'
 alias vimconfig='nvim ~/.config/nvim/lua/configs'
 alias zshconfig='nvim ~/.zshconf && source ~/.zshrc'
-alias ap='ansible-playbook ~/.config/dot_files/ansible/playbook.yaml --ask-become-pass'
+alias ap='ansible-playbook $DOTFILES_DIR/ansible/playbook.yaml --ask-become-pass'
 
 # --- ALIASES FOR TOOLS ---
 alias cat='bat'

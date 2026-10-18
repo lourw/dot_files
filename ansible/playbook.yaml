@@ -1,9 +1,10 @@
 - name: Ansible Playbook
   hosts: localhost
   vars:
-    dot_files_path: "{{ ansible_facts['user_dir'] }}/.config/dot_files"
+    # Derived from the playbook location so the repo can be cloned anywhere
+    dot_files_path: "{{ playbook_dir | dirname }}"
     config_path: "{{ ansible_facts['user_dir'] }}/.config"
-    playbook_path: "{{ ansible_facts['user_dir'] }}/.config/dot_files/ansible"
+    playbook_path: "{{ playbook_dir }}"
     zsh_file: "{{ ansible_facts['user_dir'] }}/.zshconf"
   pre_tasks:
     - name: Load package variables

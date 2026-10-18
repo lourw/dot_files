@@ -1,0 +1,29 @@
+# Symlink each item in `links` ({ src, dest }) into place.
+# Anything already at dest that isn't a symlink gets moved to dest.bak.<epoch>
+# so fresh machines with default configs don't fail the play.
+- name: Check existing link targets
+  stat:
+    path: "{{ item.dest }}"
+    follow: false
+  loop: "{{ links }}"
+  register: link_targets
+
+- name: Back up existing configs
+  command:
+    argv:
+      - mv
+      - "{{ target.item.dest | expanduser }}"
+      - "{{ target.item.dest | expanduser }}.bak.{{ ansible_facts['date_time']['epoch'] }}"
+  loop: "{{ link_targets.results }}"
+  loop_control:
+    loop_var: target
+    label: "{{ target.item.dest }}"
+  when: target.stat.exists and not target.stat.islnk
+
+- name: Create symlinks
+  file:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+    force: true
+  loop: "{{ links }}"
