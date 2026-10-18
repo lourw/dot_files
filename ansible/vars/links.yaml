@@ -11,6 +11,7 @@ dotfile_links:
   - { src: "{{ dot_files_path }}/mise", dest: "{{ config_path }}/mise" }
   - { src: "{{ dot_files_path }}/wezterm", dest: "{{ config_path }}/wezterm" }
   - { src: "{{ dot_files_path }}/zed", dest: "{{ config_path }}/zed" }
+  - { src: "{{ dot_files_path }}/ai/opencode/opencode.json", dest: "{{ config_path }}/opencode/opencode.json" }
 
 # Links created by older versions of this repo, removed if they point into it
 dotfile_legacy_links:
