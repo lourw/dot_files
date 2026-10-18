@@ -1,0 +1,30 @@
+# Remove one symlink (`link.dest`) if it points into the repo, then restore the
+# most recent backup made by link.yaml, if any.
+- name: "Check {{ link.dest }}"
+  stat:
+    path: "{{ link.dest }}"
+    follow: false
+  register: link_stat
+
+- name: "Remove {{ link.dest }}"
+  file:
+    path: "{{ link.dest }}"
+    state: absent
+  when: link_stat.stat.islnk | default(false) and link_stat.stat.lnk_source is match(dot_files_path)
+
+- name: "Find backups of {{ link.dest }}"
+  find:
+    paths: "{{ link.dest | dirname }}"
+    patterns: "{{ link.dest | basename }}.bak.*"
+    file_type: any
+    hidden: true
+  register: link_backups
+
+- name: "Restore latest backup of {{ link.dest }}"
+  command:
+    argv:
+      - mv
+      - "{{ (link_backups.files | map(attribute='path') | sort | last) }}"
+      - "{{ link.dest }}"
+    creates: "{{ link.dest }}"
+  when: link_backups.matched > 0

@@ -20,6 +20,12 @@
     label: "{{ target.item.dest }}"
   when: target.stat.exists and not target.stat.islnk
 
+- name: Ensure link parent directories exist
+  file:
+    path: "{{ item.dest | expanduser | dirname }}"
+    state: directory
+  loop: "{{ links }}"
+
 - name: Create symlinks
   file:
     src: "{{ item.src }}"

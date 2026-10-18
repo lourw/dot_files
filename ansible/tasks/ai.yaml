@@ -1,5 +1,0 @@
-- name: Setup claude
-  include_tasks: "{{ playbook_path }}/tasks/link.yaml"
-  vars:
-    links:
-      - { src: "{{ dot_files_path }}/ai/claude", dest: "~/.claude" }

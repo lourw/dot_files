@@ -11,7 +11,7 @@ alias ls="ls --color=auto"
 alias notes='cd ~/notes && nvim $(date '+%y-%m-%d').md'
 alias precommit-config='nvim .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit'
 alias sane='stty sane'
-alias tmuxconfig='nvim ~/.tmux.conf'
+alias tmuxconfig='nvim ~/.config/tmux/tmux.conf'
 alias vimconfig='nvim ~/.config/nvim/lua/configs'
 alias zshconfig='nvim ~/.zshconf && source ~/.zshrc'
 alias ap='ansible-playbook $DOTFILES_DIR/ansible/playbook.yaml --ask-become-pass'

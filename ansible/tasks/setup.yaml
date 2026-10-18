@@ -1,14 +1,23 @@
 # Setup symlinks such that all config files in repo get placed
-# where they are supposed to be
+# where they are supposed to be. The list lives in vars/links.yaml.
 - name: Setup config symlinks
   include_tasks: "{{ playbook_path }}/tasks/link.yaml"
   vars:
-    links:
-      - { src: "{{ dot_files_path }}/nvim", dest: "{{ config_path }}/nvim" }
-      - { src: "{{ dot_files_path }}/helix", dest: "{{ config_path }}/helix" }
-      - { src: "{{ dot_files_path }}/tmux", dest: "{{ config_path }}/tmux" }
-      - { src: "{{ dot_files_path }}/zsh/zshconf", dest: "~/.zshconf" }
-      - { src: "{{ dot_files_path }}/zsh/utils.sh", dest: "{{ config_path }}/utils.sh" }
-      - { src: "{{ dot_files_path }}/fd/fdignore", dest: "~/.fdignore" }
-      - { src: "{{ dot_files_path }}/wezterm", dest: "{{ config_path }}/wezterm" }
-      - { src: "{{ dot_files_path }}/zed", dest: "{{ config_path }}/zed" }
+    links: "{{ dotfile_links }}"
+
+- name: Check legacy symlinks
+  stat:
+    path: "{{ item }}"
+    follow: false
+  loop: "{{ dotfile_legacy_links }}"
+  register: legacy_links
+
+- name: Remove legacy symlinks into the repo
+  file:
+    path: "{{ legacy.item }}"
+    state: absent
+  loop: "{{ legacy_links.results }}"
+  loop_control:
+    loop_var: legacy
+    label: "{{ legacy.item }}"
+  when: legacy.stat.islnk | default(false) and legacy.stat.lnk_source is match(dot_files_path)

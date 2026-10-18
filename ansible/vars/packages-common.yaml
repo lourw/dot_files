@@ -5,6 +5,7 @@ packages_common:
   - fd
   - fzf
   - ghostty
+  - helix
   - k9s
   - kubectl
   - kubectx
@@ -18,5 +19,6 @@ packages_common:
   - tree
   - wezterm
   - zig
+  - zsh
   - zsh-autosuggestions
   - zsh-syntax-highlighting

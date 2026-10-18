@@ -1,56 +1,15 @@
-- name: Add zshconf to .zshrc
+# The lines live in vars/zshrc.yaml so uninstall.yaml can remove them
+- name: Add dotfile config to .zshrc
   lineinfile:
-    path: ~/.zshrc
-    line: "source ~/.zshconf"
+    path: "{{ home_path }}/.zshrc"
+    line: "{{ item }}"
     state: present
     create: yes
+  loop: "{{ zshrc_lines }}"
 
-- name: Add utils.sh to .zshrc
+- name: Remove legacy lines from .zshrc
   lineinfile:
-    path: ~/.zshrc
-    line: "source {{ config_path }}/utils.sh"
-
-- name: Add powerlevel10k to zsh
-  lineinfile:
-    path: ~/.zshrc
-    line: |
-      {% if ansible_facts['distribution'] == 'MacOSX' %}
-      source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
-      {% else %}
-      source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-      {% endif %}
-    state: present
-    create: yes
-
-- name: Add zsh autosuggestions to zsh
-  lineinfile:
-    path: ~/.zshrc
-    line: |
-      {% if ansible_facts['distribution'] == 'MacOSX'  %}
-      source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-      {% elif ansible_facts['distribution'] == 'Fedora' %}
-      source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-      {% else %}
-      source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-      {% endif %}
-    state: present
-
-- name: Add syntax highlighting to zsh
-  lineinfile:
-    path: ~/.zshrc
-    line: |
-      {% if ansible_facts['distribution'] == 'MacOSX' %}
-      source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-      {% elif ansible_facts['distribution'] == 'Fedora' %}
-      source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-      {% else %}
-      source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-      {% endif %}
-    state: present
-
-- name: Add fzf to zsh
-  lineinfile:
-    path: ~/.zshrc
-    line: source <(fzf --zsh)
-    state: present
-
+    path: "{{ home_path }}/.zshrc"
+    line: "{{ item }}"
+    state: absent
+  loop: "{{ zshrc_legacy_lines }}"

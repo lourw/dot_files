@@ -1,0 +1,7 @@
+# macOS already defaults to zsh
+- name: Set zsh as the default shell
+  become: true
+  user:
+    name: "{{ ansible_facts['user_id'] }}"
+    shell: /usr/bin/zsh
+  when: ansible_facts['distribution'] != 'MacOSX'

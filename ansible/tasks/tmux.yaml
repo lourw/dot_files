@@ -8,5 +8,9 @@
   git: 
     repo: 'https://github.com/tmux-plugins/tpm'
     dest: "{{ dot_files_path }}/tmux/plugins/tpm"
-    force: yes
     update: yes
+
+- name: Install tmux plugins
+  command: "{{ dot_files_path }}/tmux/plugins/tpm/bin/install_plugins"
+  register: tpm_install
+  changed_when: "'download success' in tpm_install.stdout"

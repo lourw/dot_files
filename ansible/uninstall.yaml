@@ -1,0 +1,37 @@
+# Removes everything playbook.yaml places outside the repo:
+# symlinks (vars/links.yaml) and ~/.zshrc lines (vars/zshrc.yaml).
+# Installed packages, mise runtimes and the login shell are left alone.
+- name: Uninstall dotfiles
+  hosts: localhost
+  vars:
+    dot_files_path: "{{ playbook_dir | dirname }}"
+    home_path: "{{ ansible_facts['user_dir'] }}"
+    config_path: "{{ home_path }}/.config"
+    playbook_path: "{{ playbook_dir }}"
+  pre_tasks:
+    - name: Load variables
+      include_vars:
+        dir: "{{ playbook_path }}/vars"
+        extensions:
+          - yaml
+  tasks:
+    - name: Remove symlinks and restore backups
+      include_tasks: "{{ playbook_path }}/tasks/unlink.yaml"
+      loop: "{{ dotfile_links + (dotfile_legacy_links | map('community.general.dict_kv', 'dest')) }}"
+      loop_control:
+        loop_var: link
+        label: "{{ link.dest }}"
+
+    - name: Remove dotfile lines from .zshrc
+      lineinfile:
+        path: "{{ home_path }}/.zshrc"
+        line: "{{ item }}"
+        state: absent
+      loop: "{{ zshrc_lines + zshrc_legacy_lines }}"
+
+    - name: Next steps
+      debug:
+        msg:
+          - "Dotfile links and .zshrc lines removed."
+          - "Not touched: installed packages, mise runtimes, your login shell, and older *.bak.* files."
+          - "To finish, delete the repo: rm -rf {{ dot_files_path }}"

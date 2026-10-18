@@ -3,9 +3,9 @@
   vars:
     # Derived from the playbook location so the repo can be cloned anywhere
     dot_files_path: "{{ playbook_dir | dirname }}"
-    config_path: "{{ ansible_facts['user_dir'] }}/.config"
+    home_path: "{{ ansible_facts['user_dir'] }}"
+    config_path: "{{ home_path }}/.config"
     playbook_path: "{{ playbook_dir }}"
-    zsh_file: "{{ ansible_facts['user_dir'] }}/.zshconf"
   pre_tasks:
     - name: Load package variables
       include_vars:
@@ -36,6 +36,6 @@
 
     - name: Link .zshconf to .zshrc
       include_tasks: "{{ playbook_path }}/tasks/zsh.yaml"
-    
-    - name: Setup AI tooling
-      include_tasks: "{{ playbook_path }}/tasks/ai.yaml"
+
+    - name: Set default shell
+      include_tasks: "{{ playbook_path }}/tasks/shell.yaml"

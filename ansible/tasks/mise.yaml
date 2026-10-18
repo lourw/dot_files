@@ -1,16 +1,5 @@
-- name: Set variables
-  set_fact:
-    node_version: node@24
-
-- name: Setup node version
-  command: "mise install {{ node_version }}"
-
-- name: Set global node version
-  command: "mise use --global {{ node_version }}"
-
-- name: Activate mise
-  lineinfile:
-    path: "{{ zsh_file }}"
-    line: 'eval "$(mise activate zsh)"'
-    state: present
-    create: yes
+# Runtimes are pinned in mise/config.toml, linked to ~/.config/mise by setup.yaml
+- name: Install mise runtimes
+  command: mise install
+  register: mise_install
+  changed_when: "'all tools are installed' not in mise_install.stderr + mise_install.stdout"

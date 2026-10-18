@@ -1,0 +1,7 @@
+packages_dnf: []
+# Entries in packages_common that aren't available in the Fedora repos
+packages_dnf_exclude:
+  - fd # packaged as fd-find
+  - kubectl # packaged as kubernetes-client
+  - kubectx
+  - wezterm

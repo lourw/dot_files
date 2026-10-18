@@ -1,0 +1,16 @@
+# Lines added to ~/.zshrc by tasks/zsh.yaml and removed by uninstall.yaml
+zsh_plugin_dir: >-
+  {{ '$(brew --prefix)/share' if ansible_facts['distribution'] == 'MacOSX'
+     else '/usr/share' if ansible_facts['distribution'] == 'Fedora'
+     else '/usr/share/zsh/plugins' }}
+
+zshrc_lines:
+  - "source ~/.zshconf"
+  - "source {{ config_path }}/utils.sh"
+  - "source {{ zsh_plugin_dir }}/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  - "source {{ zsh_plugin_dir }}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  - "source <(fzf --zsh)"
+
+# Lines added by older versions of this repo, removed by setup and uninstall
+zshrc_legacy_lines:
+  - "source {{ '$(brew --prefix)/share/powerlevel10k' if ansible_facts['distribution'] == 'MacOSX' else '/usr/share/zsh-theme-powerlevel10k' }}/powerlevel10k.zsh-theme"

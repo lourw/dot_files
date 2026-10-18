@@ -7,28 +7,7 @@
   dnf:
     state: present
     update_cache: true
-    name:
-      - bat
-      - elixir
-      - erlang
-     # - fd
-      - fzf
-      - ghostty
-      - k9s
-     # - kubectl
-     # - kubectx
-      - lazygit
-      - luarocks
-      - mise
-      - neovim
-      - poetry
-      - ripgrep
-      - tmux
-      - tree
-     # - wezterm
-      - zig
-      - zsh-autosuggestions
-      - zsh-syntax-highlighting
+    name: "{{ (packages_common | difference(packages_dnf_exclude)) + packages_dnf }}"
   register: changed_pkgs
 
 - name: Print changed packages
