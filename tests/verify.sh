@@ -36,8 +36,10 @@ if [ "$MODE" = installed ]; then
   done < <(sed -n 's/^source \([^<$(][^ ]*\)$/\1/p' "$HOME/.zshrc")
   # Loading the full config must not print errors (missing plugins, bad aliases, mise...).
   # Run under a pty like a real terminal: without a tty, fzf's zsh integration fails to
-  # restore the zle option. `script` merges stdout and stderr, but this prints nothing on success.
-  zsh_err="$(TERM=xterm-256color script -qec 'zsh -i -c exit' /dev/null </dev/null | tr -d '\r')"
+  # restore the zle option. `script` merges stdout and stderr, but this prints nothing on success
+  # except terminal control sequences (e.g. cursor show/hide), which are stripped.
+  zsh_err="$(TERM=xterm-256color script -qec 'zsh -i -c exit' /dev/null </dev/null |
+    sed -e 's/\x1b\[[0-9;?]*[a-zA-Z]//g' -e 's/\x1b[=>]//g' | tr -d '\r')"
   if [ -z "$zsh_err" ]; then pass "interactive zsh starts cleanly"; else fail "interactive zsh printed: $zsh_err"; fi
 
   echo "Tools"
