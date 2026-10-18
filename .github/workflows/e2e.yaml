@@ -7,10 +7,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  ubuntu:
+  arch:
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    # Fresh Arch container rather than the runner host, whose preinstalled
+    # tools and directories don't look like a new machine
+    container: archlinux:latest
     steps:
       - uses: actions/checkout@v4
+      # Runs as root: creates a sudo user and runs tests/e2e.sh as them
       - name: Run e2e test
-        run: bash tests/e2e.sh
+        run: bash tests/container.sh
