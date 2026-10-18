@@ -1,16 +1,9 @@
 packages_apt:
   - curl # for the mise installer
-  - fd-find
   - python3-poetry
 # Entries in packages_common that aren't in the Debian/Ubuntu repos (or are named differently)
 packages_apt_exclude:
-  - fd # packaged as fd-find
   - ghostty
-  - helix # only in Debian 13+ (as hx)
-  - k9s
-  - kubectl # only in Debian 13+
-  - lazygit # only in Debian 13+
   - mise # installed with the official mise.run script in tasks/apt.yaml
   - poetry # packaged as python3-poetry
   - wezterm
-  - zig

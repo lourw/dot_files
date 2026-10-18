@@ -6,3 +6,16 @@ node = "26"
 rust = "latest"
 # CLI that nvim-treesitter builds parsers with
 tree-sitter = "latest"
+
+# CLI tools: prebuilt binaries, same versions on every OS
+bat = "latest"
+fd = "latest"
+fzf = "latest"
+helix = "latest"
+k9s = "latest"
+kubectl = "latest"
+kubectx = "latest"
+kubens = "latest"
+lazygit = "latest"
+ripgrep = "latest"
+zig = "latest"

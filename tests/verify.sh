@@ -39,17 +39,15 @@ if [ "$MODE" = installed ]; then
   if [ -z "$zsh_err" ]; then pass "interactive zsh starts cleanly"; else fail "interactive zsh printed: $zsh_err"; fi
 
   echo "Tools"
-  for cmd in git tmux fzf rg zsh ansible-playbook; do
+  for cmd in git tmux zsh ansible-playbook; do
     check "$cmd installed" command -v "$cmd"
   done
-  check "fd installed" bash -c 'command -v fd || command -v fdfind'
-  check "bat installed" bash -c 'command -v bat || command -v batcat'
-  check "mise on PATH in zsh" zsh -ic 'command -v mise'
+  # Installed by mise, so only on PATH once zsh has activated it
+  for cmd in mise bat fd fzf hx k9s kubectl kubectx kubens lazygit rg zig tree-sitter; do
+    check "$cmd on PATH in zsh" zsh -ic "command -v $cmd"
+  done
   # nvim-treesitter needs 0.12+; nvim comes from mise
   check "nvim 0.12+ in zsh" zsh -ic 'nvim --version | head -1 | grep -qE "v(0\.(1[2-9]|[2-9][0-9])|[1-9])"'
-  check "tree-sitter CLI in zsh" zsh -ic 'command -v tree-sitter'
-  check "fd alias works in zsh" zsh -ic 'fd --version'
-  check "bat alias works in zsh" zsh -ic 'bat --version'
 
   echo "mise runtimes"
   for tool in node go rust; do
