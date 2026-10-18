@@ -19,11 +19,15 @@
 
     - name: Setup pacman packages
       include_tasks: "{{ playbook_path }}/tasks/pacman.yaml"
-      when: ansible_facts['distribution'] == 'Archlinux'
+      when: ansible_facts['os_family'] == 'Archlinux'
 
     - name: Setup dnf packages
       include_tasks: "{{ playbook_path }}/tasks/dnf.yaml"
       when: ansible_facts['distribution'] == 'Fedora'
+
+    - name: Setup apt packages
+      include_tasks: "{{ playbook_path }}/tasks/apt.yaml"
+      when: ansible_facts['os_family'] == 'Debian'
 
     - name: Setup config files
       include_tasks: "{{ playbook_path }}/tasks/setup.yaml"

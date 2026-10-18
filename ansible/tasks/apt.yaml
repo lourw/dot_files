@@ -1,0 +1,18 @@
+# Covers Debian, Ubuntu and their derivatives (Mint, Pop!_OS, ...)
+- name: Install packages via apt
+  become: true
+  apt:
+    state: present
+    update_cache: true
+    name: "{{ (packages_common | difference(packages_apt_exclude)) + packages_apt }}"
+  register: changed_pkgs
+
+- name: Print changed packages
+  debug:
+    msg: "{{ changed_pkgs }}"
+
+# mise isn't in the distro repos; the official installer puts it in ~/.local/bin
+- name: Install mise
+  shell: curl -fsSL https://mise.run | sh
+  args:
+    creates: "{{ home_path }}/.local/bin/mise"

@@ -41,6 +41,11 @@ install_prereqs() {
           info "Installing git and ansible via dnf"
           sudo dnf install -y git ansible
           ;;
+        *debian*|*ubuntu*)
+          info "Installing git and ansible via apt"
+          sudo apt-get update
+          sudo apt-get install -y git ansible
+          ;;
         *) die "Unsupported distribution: ${ID}" ;;
       esac
       ;;
@@ -64,8 +69,13 @@ clone_repo() {
 
 run_playbook() {
   info "Running ansible playbook"
-  # Read the become password from the terminal, since stdin is the curl pipe
-  ansible-playbook "$DOTFILES_DIR/ansible/playbook.yaml" --ask-become-pass </dev/tty
+  if sudo -n true 2>/dev/null; then
+    # Passwordless sudo (e.g. CI): no prompt, and there may be no tty
+    ansible-playbook "$DOTFILES_DIR/ansible/playbook.yaml"
+  else
+    # Read the become password from the terminal, since stdin is the curl pipe
+    ansible-playbook "$DOTFILES_DIR/ansible/playbook.yaml" --ask-become-pass </dev/tty
+  fi
 }
 
 install_prereqs

@@ -17,6 +17,9 @@ alias zshconfig='nvim ~/.zshconf && source ~/.zshrc'
 alias ap='ansible-playbook $DOTFILES_DIR/ansible/playbook.yaml --ask-become-pass'
 
 # --- ALIASES FOR TOOLS ---
+# Debian/Ubuntu install these as fdfind and batcat
+command -v fdfind >/dev/null && alias fd='fdfind'
+command -v batcat >/dev/null && alias bat='batcat'
 alias cat='bat'
 alias fcd='cd $(fd -L --type d . ~ | fzf)'
 alias f='nvim $(fd . | fzf)'
@@ -45,6 +48,8 @@ alias debug='kubectl run debug --image ubuntu -- sleep 3600'
 alias ports='lsof -i -P -n | grep LISTEN'
 
 export EDITOR=nvim
+# mise.run installs mise here on apt distros
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="~/.local/share/mise/shims:$PATH"
 eval "$(mise activate zsh)"
 

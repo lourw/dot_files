@@ -1,5 +1,8 @@
 # Runtimes are pinned in mise/config.toml, linked to ~/.config/mise by setup.yaml
 - name: Install mise runtimes
   command: mise install
+  environment:
+    # Where the mise.run installer puts it on apt distros
+    PATH: "{{ home_path }}/.local/bin:{{ ansible_env.PATH }}"
   register: mise_install
   changed_when: "'all tools are installed' not in mise_install.stderr + mise_install.stdout"
