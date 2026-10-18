@@ -1,1 +1,1 @@
-themes/blue.tmux
+themes/turquoise.tmux
