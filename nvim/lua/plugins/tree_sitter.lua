@@ -1,25 +1,26 @@
--- Note: look at `config/lazy_config.lua` for where we look for treesitter compiler
+-- nvim-treesitter's main branch: parsers are built with the tree-sitter CLI (pinned in
+-- mise/config.toml), and highlighting is started by Neovim itself, not a setup() option
+local parsers = {
+  "python",
+  "rust",
+  "go",
+  "typescript",
+  "erlang",
+  "elixir"
+}
+
 return {
-  { 
-    'nvim-treesitter/nvim-treesitter', 
+  {
+    'nvim-treesitter/nvim-treesitter',
+    lazy = false, -- doesn't support lazy-loading
     build = ":TSUpdate",
     config = function()
-      require('nvim-treesitter.configs').setup {
-        ensure_installed = {
-          "python",
-          "rust",
-          "go",
-          "typescript",
-          "erlang",
-          "elixir"
-        },
-        autotag = {
-          enable = true,
-        },
-        highlight = {
-          enable = true,
-        }
-      }
+      require('nvim-treesitter').install(parsers)
+
+      -- Highlight any filetype that has a parser installed
+      vim.api.nvim_create_autocmd('FileType', {
+        callback = function() pcall(vim.treesitter.start) end,
+      })
     end
   }
 }
