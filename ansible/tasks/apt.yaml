@@ -16,3 +16,4 @@
   shell: curl -fsSL https://mise.run | sh
   args:
     creates: "{{ home_path }}/.local/bin/mise"
+

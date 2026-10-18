@@ -1,4 +1,8 @@
 [tools]
+# Distro packages lag behind; the nvim config needs 0.12+
+neovim = "latest"
 go = "latest"
 node = "26"
 rust = "latest"
+# CLI that nvim-treesitter builds parsers with
+tree-sitter = "latest"
