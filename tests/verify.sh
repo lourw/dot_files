@@ -54,7 +54,7 @@ if [ "$MODE" = installed ]; then
   done
 
   echo "tmux plugins"
-  for plugin in tpm tmuxifier tmux-resurrect tmux-gruvbox; do
+  for plugin in tpm tmuxifier tmux-resurrect; do
     check "$plugin" test -d "$CONFIG/tmux/plugins/$plugin"
   done
 
