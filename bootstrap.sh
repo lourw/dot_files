@@ -69,7 +69,8 @@ clone_repo() {
 
 run_playbook() {
   info "Running ansible playbook"
-  if sudo -n true 2>/dev/null; then
+  # -k ignores credentials cached by the sudo calls above, which ansible can't reuse
+  if sudo -k -n true 2>/dev/null; then
     # Passwordless sudo (e.g. CI): no prompt, and there may be no tty
     ansible-playbook "$DOTFILES_DIR/ansible/playbook.yaml"
   else
