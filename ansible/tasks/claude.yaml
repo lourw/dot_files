@@ -1,0 +1,6 @@
+# Hooks that drive the tmux tab icons (tmux/scripts/claude-status.sh).
+# Merged into ~/.claude/settings.json since Claude Code rewrites that file.
+- name: Add Claude Code hooks to settings.json
+  command: "{{ dot_files_path }}/ai/claude/merge-hooks.sh"
+  register: claude_hooks
+  changed_when: "'changed' in claude_hooks.stdout"

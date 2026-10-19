@@ -39,6 +39,9 @@
     - name: Install tpm plugins for tmux
       include_tasks: "{{ playbook_path }}/tasks/tmux.yaml"
 
+    - name: Add Claude Code hooks
+      include_tasks: "{{ playbook_path }}/tasks/claude.yaml"
+
     - name: Setup mise
       include_tasks: "{{ playbook_path }}/tasks/mise.yaml"
 

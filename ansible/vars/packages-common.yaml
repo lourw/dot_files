@@ -2,6 +2,7 @@ packages_common:
   - elixir
   - erlang
   - ghostty
+  - jq # Claude Code hooks (ai/claude, tmux/scripts/claude-status.sh)
   - luarocks
   - mise
   - poetry

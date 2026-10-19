@@ -1,5 +1,6 @@
 # Removes everything playbook.yaml places outside the repo:
-# symlinks (vars/links.yaml) and ~/.zshrc lines (vars/zshrc.yaml).
+# symlinks (vars/links.yaml), ~/.zshrc lines (vars/zshrc.yaml) and the
+# Claude Code hooks in ~/.claude/settings.json (ai/claude/hooks.json).
 # Installed packages, mise runtimes and the login shell are left alone.
 - name: Uninstall dotfiles
   hosts: localhost
@@ -29,9 +30,14 @@
         state: absent
       loop: "{{ zshrc_lines + zshrc_legacy_lines }}"
 
+    - name: Remove Claude Code hooks from settings.json
+      command: "{{ dot_files_path }}/ai/claude/merge-hooks.sh --remove"
+      register: claude_hooks
+      changed_when: "'changed' in claude_hooks.stdout"
+
     - name: Next steps
       debug:
         msg:
-          - "Dotfile links and .zshrc lines removed."
+          - "Dotfile links, .zshrc lines and Claude Code hooks removed."
           - "Not touched: installed packages, mise runtimes, your login shell, and older *.bak.* files."
           - "To finish, delete the repo: rm -rf {{ dot_files_path }}"
