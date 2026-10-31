@@ -12,6 +12,7 @@ dotfile_links:
   - { src: "{{ dot_files_path }}/wezterm", dest: "{{ config_path }}/wezterm" }
   - { src: "{{ dot_files_path }}/zed", dest: "{{ config_path }}/zed" }
   - { src: "{{ dot_files_path }}/ai/opencode/opencode.json", dest: "{{ config_path }}/opencode/opencode.json" }
+  - { src: "{{ dot_files_path }}/ai/pi/models.json", dest: "{{ home_path }}/.pi/agent/models.json" }
 
 # Links created by older versions of this repo, removed if they point into it
 dotfile_legacy_links:
