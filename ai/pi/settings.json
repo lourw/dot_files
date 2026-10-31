@@ -1,0 +1,8 @@
+{
+  "lastChangelogVersion": "1.4.0",
+  "packages": [
+    "npm:pi-web-access",
+    "git:github.com/elpapi42/pi-minimal-subagent",
+    "npm:@juicesharp/rpiv-ask-user-question"
+  ]
+}
