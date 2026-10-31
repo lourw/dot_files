@@ -2,15 +2,15 @@
   "$schema": "https://pi.dev/schemas/models.schema.json",
   "providers": {
     "llama-server": {
-      "baseUrl": "{{ llm_base_url }}",
+      "baseUrl": "https://cachy.tail1107be.ts.net/v1",
       "api": "openai-completions",
       "apiKey": "llama-server",
       "models": [
         {
-          "id": "{{ llm_model.id }}",
-          "name": "{{ llm_model.name }}",
-          "contextWindow": {{ llm_model.context }},
-          "maxTokens": {{ llm_model.output }}
+          "id": "qwen3.8-flash-next",
+          "name": "Qwen3.8 Flash-Next (local)",
+          "contextWindow": 131072,
+          "maxTokens": 16384
         }
       ]
     }

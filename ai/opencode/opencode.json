@@ -5,14 +5,14 @@
       "npm": "@ai-sdk/openai-compatible",
       "name": "llama-server (cachy via tailnet)",
       "options": {
-        "baseURL": "{{ llm_base_url }}"
+        "baseURL": "https://cachy.tail1107be.ts.net/v1"
       },
       "models": {
-        "{{ llm_model.id }}": {
-          "name": "{{ llm_model.name }}",
+        "qwen3.8-flash-next": {
+          "name": "Qwen3.8 Flash-Next (local)",
           "limit": {
-            "context": {{ llm_model.context }},
-            "output": {{ llm_model.output }}
+            "context": 131072,
+            "output": 16384
           }
         }
       }

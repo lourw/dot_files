@@ -1,6 +1,5 @@
-# DeepSeek Harness profile patch ($DSH_HOME/profiles/web/cordis.patch.yml),
-# rendered by ansible from ansible/vars/ai.yaml. Edits made in the dsh UI get
-# overwritten on the next playbook run, so change ai/dsh/cordis.patch.yml.j2 instead.
+# DeepSeek Harness profile patch, linked to $DSH_HOME/profiles/web/cordis.patch.yml.
+# Keep the llama-server URL and model in sync with ai/opencode and ai/pi.
 - id: ui-settings-general
   name: "@deepseek-ai/dsh-client-ui-settings-general"
   config:
@@ -9,7 +8,7 @@
   name: "@deepseek-ai/dsh-agent-default-model"
   config:
     provider: llama-server
-    model: {{ llm_model.id }}
+    model: qwen3.8-flash-next
 - id: llm-pi-ai
   name: "@deepseek-ai/dsh-llm-pi-ai"
   config:
@@ -18,9 +17,9 @@
         # llama-server ignores the key, dsh just needs one set (exported in zshconf)
         apiKeyEnv: LLAMA_SERVER_API_KEY
         api: openai-completions
-        baseURL: {{ llm_base_url }}
+        baseURL: https://cachy.tail1107be.ts.net/v1
         models:
-          - id: {{ llm_model.id }}
-            name: {{ llm_model.name }}
-            contextWindow: {{ llm_model.context }}
-            maxTokens: {{ llm_model.output }}
+          - id: qwen3.8-flash-next
+            name: Qwen3.8 Flash-Next (local)
+            contextWindow: 131072
+            maxTokens: 16384
