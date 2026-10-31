@@ -1,0 +1,18 @@
+{
+  "$schema": "https://pi.dev/schemas/models.schema.json",
+  "providers": {
+    "llama-server": {
+      "baseUrl": "{{ llm_base_url }}",
+      "api": "openai-completions",
+      "apiKey": "llama-server",
+      "models": [
+        {
+          "id": "{{ llm_model.id }}",
+          "name": "{{ llm_model.name }}",
+          "contextWindow": {{ llm_model.context }},
+          "maxTokens": {{ llm_model.output }}
+        }
+      ]
+    }
+  }
+}

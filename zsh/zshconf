@@ -53,6 +53,8 @@ alias debug='kubectl run debug --image ubuntu -- sleep 3600'
 alias ports='lsof -i -P -n | grep LISTEN'
 
 export EDITOR=nvim
+# Placeholder key for the local llama-server, which ignores it (dsh needs one set)
+export LLAMA_SERVER_API_KEY=llama-server
 # mise.run installs mise here on apt distros
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="~/.local/share/mise/shims:$PATH"

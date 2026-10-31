@@ -1,0 +1,14 @@
+# Render each item in `templates` ({ src, dest }) into place.
+# A changed dest is backed up to dest.<timestamp>~ first, so local edits survive.
+- name: Ensure template parent directories exist
+  file:
+    path: "{{ item.dest | dirname }}"
+    state: directory
+  loop: "{{ templates }}"
+
+- name: Render templates
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    backup: true
+  loop: "{{ templates }}"

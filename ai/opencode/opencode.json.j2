@@ -1,0 +1,21 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "llama.cpp": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "llama-server (cachy via tailnet)",
+      "options": {
+        "baseURL": "{{ llm_base_url }}"
+      },
+      "models": {
+        "{{ llm_model.id }}": {
+          "name": "{{ llm_model.name }}",
+          "limit": {
+            "context": {{ llm_model.context }},
+            "output": {{ llm_model.output }}
+          }
+        }
+      }
+    }
+  }
+}

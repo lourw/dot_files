@@ -1,0 +1,28 @@
+# DeepSeek Harness profile patch ($DSH_HOME/profiles/web/cordis.patch.yml),
+# rendered by ansible from ansible/vars/ai.yaml. Edits made in the dsh UI get
+# overwritten on the next playbook run, so change ai/dsh/cordis.patch.yml.j2 instead.
+- id: ui-settings-general
+  name: "@deepseek-ai/dsh-client-ui-settings-general"
+  config:
+    welcomeNoticeVersion: 2026-09-28.1
+- id: agent-default-model
+  name: "@deepseek-ai/dsh-agent-default-model"
+  config:
+    provider: llama-server
+    model: {{ llm_model.id }}
+- id: llm-pi-ai
+  name: "@deepseek-ai/dsh-llm-pi-ai"
+  config:
+    providers:
+      llama-server:
+        # llama-server ignores the key, dsh just needs one set (exported in zshconf)
+        apiKeyEnv: LLAMA_SERVER_API_KEY
+        api: openai-completions
+        baseURL: {{ llm_base_url }}
+        # No reasoningEfforts: llama-server answers reasoning_effort (tried "low") with
+        # "Context size has been exceeded" for this model
+        models:
+          - id: {{ llm_model.id }}
+            name: {{ llm_model.name }}
+            contextWindow: {{ llm_model.context }}
+            maxTokens: {{ llm_model.output }}

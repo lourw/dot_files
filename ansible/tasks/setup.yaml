@@ -21,3 +21,10 @@
     loop_var: legacy
     label: "{{ legacy.item }}"
   when: legacy.stat.islnk | default(false) and legacy.stat.lnk_source is match(dot_files_path)
+
+# Rendered rather than linked so they can share vars/ai.yaml.
+# Runs after the legacy cleanup, which removes the old symlinks to these.
+- name: Render AI configs
+  include_tasks: "{{ playbook_path }}/tasks/template.yaml"
+  vars:
+    templates: "{{ ai_config_templates }}"

@@ -32,3 +32,7 @@ packages, mise runtimes and your login shell are left as-is. Then delete the rep
    in `ansible/vars/packages-dnf.yaml`.
 
 Runtime versions (node, go, rust) are pinned in `mise/config.toml`.
+
+AI harness configs (opencode, pi, dsh) are rendered from `ai/**/*.j2` instead of linked, so they
+share the llama-server URL and model in `ansible/vars/ai.yaml`. Add new ones to
+`ai_config_templates` there, and re-run the playbook after changing the URL.

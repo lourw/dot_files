@@ -1,6 +1,6 @@
 # Removes everything playbook.yaml places outside the repo:
-# symlinks (vars/links.yaml), ~/.zshrc lines (vars/zshrc.yaml) and the
-# Claude Code hooks and status line in ~/.claude/settings.json (ai/claude).
+# symlinks (vars/links.yaml), rendered AI configs (vars/ai.yaml), ~/.zshrc
+# lines (vars/zshrc.yaml) and the Claude Code hooks and status line in ~/.claude/settings.json (ai/claude).
 # Installed packages, mise runtimes and the login shell are left alone.
 - name: Uninstall dotfiles
   hosts: localhost
@@ -22,6 +22,14 @@
       loop_control:
         loop_var: link
         label: "{{ link.dest }}"
+
+    - name: Remove rendered AI configs
+      file:
+        path: "{{ item.dest }}"
+        state: absent
+      loop: "{{ ai_config_templates }}"
+      loop_control:
+        label: "{{ item.dest }}"
 
     - name: Remove dotfile lines from .zshrc
       lineinfile:

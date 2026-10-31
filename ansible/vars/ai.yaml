@@ -1,0 +1,14 @@
+# Local llama-server (cachy via tailscale serve), shared by every AI harness.
+llm_base_url: "https://cachy.tail1107be.ts.net/v1"
+llm_model:
+  id: qwen3.8-flash-next
+  name: Qwen3.8 Flash-Next (local)
+  context: 131072
+  output: 16384
+
+# AI configs rendered from templates with the vars above: { src, dest }.
+# Used by tasks/setup.yaml to render and uninstall.yaml to remove them.
+ai_config_templates:
+  - { src: "{{ dot_files_path }}/ai/opencode/opencode.json.j2", dest: "{{ config_path }}/opencode/opencode.json" }
+  - { src: "{{ dot_files_path }}/ai/pi/models.json.j2", dest: "{{ home_path }}/.pi/agent/models.json" }
+  - { src: "{{ dot_files_path }}/ai/dsh/cordis.patch.yml.j2", dest: "{{ home_path }}/.dsh/profiles/web/cordis.patch.yml" }
