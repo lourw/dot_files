@@ -19,8 +19,6 @@
         apiKeyEnv: LLAMA_SERVER_API_KEY
         api: openai-completions
         baseURL: {{ llm_base_url }}
-        # No reasoningEfforts: llama-server answers reasoning_effort (tried "low") with
-        # "Context size has been exceeded" for this model
         models:
           - id: {{ llm_model.id }}
             name: {{ llm_model.name }}
