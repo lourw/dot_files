@@ -13,8 +13,8 @@ dotfile_links:
   - { src: "{{ dot_files_path }}/zed", dest: "{{ config_path }}/zed" }
   - { src: "{{ dot_files_path }}/ai/opencode/opencode.json", dest: "{{ config_path }}/opencode/opencode.json" }
   - { src: "{{ dot_files_path }}/ai/pi/models.json", dest: "{{ home_path }}/.pi/agent/models.json" }
-  - { src: "{{ dot_files_path }}/ai/dsh/cordis.patch.yml", dest: "{{ home_path }}/.dsh/profiles/web/cordis.patch.yml" }
 
 # Links created by older versions of this repo, removed if they point into it
 dotfile_legacy_links:
   - "{{ home_path }}/.fdignore"
+  - "{{ home_path }}/.dsh/profiles/web/cordis.patch.yml"
