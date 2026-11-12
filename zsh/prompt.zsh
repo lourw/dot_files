@@ -112,10 +112,28 @@ _prompt_precmd() {
     [[ -n $vcs_info_msg_1_ ]] && PROMPT+=" ${(pj: :)${(f)vcs_info_msg_1_}} "
   fi
   PROMPT+="%k%F{$theme[surface]}%f"
-  PROMPT+=$'\n'"%(?.%F{$theme[accent]}.%F{$theme[error]})❯%f "
+  _prompt_base=$PROMPT
+  _prompt_char
+  PROMPT+=$'\n'$REPLY
   _prompt_full=$PROMPT
 }
 add-zsh-hook precmd _prompt_precmd
+
+# Vi mode: the prompt char is ❯ in insert mode and ❮ in normal mode (vicmd), coloured
+# by the last exit status either way. Sets $REPLY to avoid a subshell
+_prompt_char() {
+  local char='❯'
+  [[ $KEYMAP == vicmd ]] && char='❮'
+  REPLY="%(?.%F{$theme[accent]}.%F{$theme[error]})$char%f "
+}
+# on a mode switch redraw the char, and set the cursor to a block (normal) or beam (insert)
+_prompt_keymap_select() {
+  _prompt_char
+  PROMPT=$_prompt_base$'\n'$REPLY
+  _prompt_full=$PROMPT
+  zle reset-prompt
+  [[ $KEYMAP == vicmd ]] && print -n '\e[2 q' || print -n '\e[6 q'
+}
 
 # Transient prompt: once a command is entered (or the line is cancelled with ctrl-c),
 # redraw its prompt as just the prompt char so scrollback stays compact. precmd doesn't
@@ -125,6 +143,10 @@ _prompt_transient() {
   zle reset-prompt
 }
 _prompt_restore() {
+  # every line starts in insert mode
+  print -n '\e[6 q'
+  _prompt_char
+  _prompt_full=$_prompt_base$'\n'$REPLY
   [[ $PROMPT == $_prompt_full ]] && return
   PROMPT=$_prompt_full
   zle reset-prompt
@@ -136,3 +158,4 @@ TRAPINT() {
 autoload -Uz add-zle-hook-widget
 add-zle-hook-widget zle-line-finish _prompt_transient
 add-zle-hook-widget zle-line-init _prompt_restore
+add-zle-hook-widget zle-keymap-select _prompt_keymap_select
