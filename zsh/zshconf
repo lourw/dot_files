@@ -38,7 +38,16 @@ HISTSIZE=50000
 SAVEHIST=50000
 setopt share_history hist_ignore_all_dups hist_ignore_space hist_reduce_blanks
 
-autoload -Uz compinit && compinit
+# Completions: run compinit once, with every completion dir already on fpath. A second
+# compinit after fpath changes sees a different file count and rebuilds ~/.zcompdump,
+# so put Docker Desktop's dir here; its ~/.zshrc block then skips its own compinit
+[[ -d ~/.docker/completions ]] && fpath=(~/.docker/completions $fpath)
+autoload -Uz compinit
+# -C trusts the existing dump (and still creates it if missing); do the full check and
+# rebuild only once it is a day old, so newly installed completions show up within a day
+() {
+  if (( $# )); then compinit; else compinit -C; fi
+} ~/.zcompdump(N.mh+24)
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
