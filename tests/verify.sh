@@ -47,7 +47,7 @@ if [ "$MODE" = installed ]; then
     check "$cmd installed" command -v "$cmd"
   done
   # Installed by mise, so only on PATH once zsh has activated it
-  for cmd in mise bat fd fzf gh hx k9s kubectl kubectx kubens lazygit rg zig tree-sitter; do
+  for cmd in mise bat fd fzf gh hx k9s kubectl kubectx kubens lazygit rg zig tree-sitter tuios; do
     check "$cmd on PATH in zsh" zsh -ic "command -v $cmd"
   done
   # nvim-treesitter needs 0.12+; nvim comes from mise

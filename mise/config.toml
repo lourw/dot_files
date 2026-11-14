@@ -19,4 +19,6 @@ kubectx = "latest"
 kubens = "latest"
 lazygit = "latest"
 ripgrep = "latest"
+# terminal window manager; prebuilt release binaries from GitHub
+"github:Gaurav-Gosain/tuios" = "latest"
 zig = "latest"
