@@ -7,19 +7,73 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "cli_default_open_behavior": "existing_window",
+  "edit_predictions": {
+    "open_ai_compatible_api": {
+      "model": "qwen3.8-flash-next",
+      "prompt_format": "qwen",
+      "api_url": "https://cachy.tail1107be.ts.net/v1"
+    }
+  },
+  "preferred_line_length": 100,
+  "which_key": {
+    "delay_ms": 500,
+    "enabled": true
+  },
   "project_panel": {
     "dock": "left"
   },
-  "buffer_font_family": "JetBrains Mono",
-  "vim_mode": true,
-  "base_keymap": "JetBrains",
-  "ui_font_size": 16,
-  "buffer_font_size": 15,
-  "theme": {
-    "mode": "system",
-    "light": "One Light",
-    "dark": "One Dark"
+  "agent": {
+    "default_profile": "ask",
+    "dock": "right",
+    "default_model": {
+      "effort": "low",
+      "provider": "Local LLM",
+      "model": "qwen-3.8-flash-next",
+      "enable_thinking": false
+    },
+    "favorite_models": [
+      {
+        "provider": "llama.cpp",
+        "model": "/home/lourw/models/qwen3.8-flash-next/UD-IQ4_XS/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf",
+        "enable_thinking": false
+      }
+    ],
+    "model_parameters": []
   },
-  "autosave": "on_focus_change",
-  "format_on_save": "on"
+  "language_models": {
+    "openai_compatible": {
+      "Local LLM": {
+        "api_url": "https://cachy.tail1107be.ts.net/v1",
+        "available_models": [
+          {
+            "name": "qwen-3.8-flash-next",
+            "max_tokens": 131072,
+            "max_output_tokens": 16384,
+            "max_completion_tokens": 16384,
+            "reasoning_effort": "low",
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": true,
+              "prompt_cache_key": true,
+              "chat_completions": true,
+              "interleaved_reasoning": true,
+              "max_tokens_parameter": true
+            }
+          }
+        ]
+      }
+    },
+    "llama.cpp": {
+      "api_url": "http://localhost:8080"
+    }
+  },
+  "agent_servers": {
+    "opencode-v2": {
+      "type": "registry"
+    }
+  },
+  "proxy": "",
+  "vim_mode": true
 }
