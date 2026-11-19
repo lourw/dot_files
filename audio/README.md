@@ -1,4 +1,4 @@
-# EasyEffects presets
+# Audio
 
 - `fw13pro.json`: original speaker preset for the Framework 13 Pro (EQ → loudness → compressor → limiter).
   Import it in EasyEffects, or copy it to `~/.local/share/easyeffects/output/`.
@@ -11,7 +11,7 @@
 2. Link the config into PipeWire's drop-in folder:
    ```sh
    mkdir -p ~/.config/pipewire/pipewire.conf.d
-   ln -s ~/.config/dot_files/easyeffects/fw13pro-pipewire.conf \
+   ln -s ~/.config/dot_files/audio/fw13pro-pipewire.conf \
          ~/.config/pipewire/pipewire.conf.d/99-fw13pro.conf
    ```
 3. Stop EasyEffects so the effects don't stack: `pkill easyeffects`, and disable its
