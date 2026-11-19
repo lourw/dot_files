@@ -39,7 +39,12 @@ Tuned by ear against an iPhone on the Framework 13 Pro speakers.
 
 - **Mids to highs: good.** Vocal range (950 Hz–3.8 kHz) eased to -6 dB, 7.5 kHz kept at -6 dB to
   avoid sibilance, +3.5 dB high shelf at 10 kHz for clarity. Leave these alone.
-- **Low end: still being worked on.** Mid-bass hits distorted when the bass was pushed harder
-  (70 Hz high-pass, +6 dB bass enhancer). The current setup uses an 85 Hz high-pass, the Calf bass
-  enhancer at +4 dB, and a bass-only compressor (<200 Hz, LR4 crossover) before the limiter to
-  stop distortion.
+- **Low end: still being worked on.** Measured with the built-in mic (test tones, 2026-11-19):
+  the speakers stay clean (<6% THD) at full scale from ~100–200 Hz but break down below ~90 Hz
+  (80 Hz at full scale: 51% THD and *lower* output). So:
+  - 4th-order Butterworth high-pass at 90 Hz in the EQ, plus another at 95 Hz on the bass band
+    *after* all gain stages (loudness/compressor/limiter otherwise push sub-bass back up).
+  - Calf bass enhancer at +4 dB (harmonics carry the "felt" bass below 90 Hz).
+  - +3 dB at 120 Hz for punch.
+  - Bass-only compressor (<200 Hz, LR4 crossover): -6 dB threshold, 4:1, 15 ms attack so kick
+    transients get through. Main compressor sidechain ignores <200 Hz.
