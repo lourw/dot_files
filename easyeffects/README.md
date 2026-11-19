@@ -1,13 +1,13 @@
 # EasyEffects presets
 
-- `fw13pro.json`: speaker preset for the Framework 13 Pro (EQ → loudness → compressor → limiter).
+- `fw13pro.json`: original speaker preset for the Framework 13 Pro (EQ → loudness → compressor → limiter).
   Import it in EasyEffects, or copy it to `~/.local/share/easyeffects/output/`.
-- `fw13pro-pipewire.conf`: the same preset as a native PipeWire filter-chain, so the effects
+- `fw13pro-pipewire.conf`: that preset as a native PipeWire filter-chain, with the EQ retuned by ear and a Calf bass enhancer added, so the effects
   apply without EasyEffects running. It is **not** installed by the Ansible playbook.
 
 ## Installing the PipeWire version (manual, per machine)
 
-1. Install the LSP plugins (Arch: `sudo pacman -S lsp-plugins-lv2`).
+1. Install the plugins (Arch: `sudo pacman -S lsp-plugins-lv2 calf`).
 2. Link the config into PipeWire's drop-in folder:
    ```sh
    mkdir -p ~/.config/pipewire/pipewire.conf.d
@@ -32,3 +32,14 @@ To change settings, edit the `.conf` and restart PipeWire (step 4).
 rm ~/.config/pipewire/pipewire.conf.d/99-fw13pro.conf
 systemctl --user restart pipewire pipewire-pulse wireplumber
 ```
+
+## Tuning status (2026-11-19)
+
+Tuned by ear against an iPhone on the Framework 13 Pro speakers.
+
+- **Mids to highs: good.** Vocal range (950 Hz–3.8 kHz) eased to -6 dB, 7.5 kHz kept at -6 dB to
+  avoid sibilance, +3.5 dB high shelf at 10 kHz for clarity. Leave these alone.
+- **Low end: still being worked on.** Mid-bass hits distorted when the bass was pushed harder
+  (70 Hz high-pass, +6 dB bass enhancer). The current setup uses an 85 Hz high-pass, the Calf bass
+  enhancer at +4 dB, and a bass-only compressor (<200 Hz, LR4 crossover) before the limiter to
+  stop distortion.
